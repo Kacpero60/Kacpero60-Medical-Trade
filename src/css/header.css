@@ -1,119 +1,112 @@
 /* Stylizacja głównego nagłówka */
 .main-header {
-    background: none; /* Usunięcie kolorów tła */
-    padding: 20px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: fixed;
+    position: relative;
     width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+    height: 400px; /* Wysokość nagłówka, może być dostosowana */
     overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
-/* Dodanie animowanych bąbelków w tle */
+.main-header .logo-section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 123, 255, 0.1); /* Delikatne tło w odcieniu niebieskim dla logo */
+    z-index: 2;
+}
+
+.main-header .logo img {
+    height: 150px; /* Można dostosować wielkość logo */
+    width: auto;
+}
+
+/* Stylizacja sekcji zdjęć w tle */
+.header-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url('/src/images/medyczne.jpg') no-repeat center center/cover;
+    animation: slideBackground 40s infinite; /* Wydłużenie czasu trwania zdjęć */
+    z-index: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%); /* Efekt podziału ekranu między logo a tłem */
+}
+
+@keyframes slideBackground {
+    0%, 20% {
+        background: url('/src/images/medyczne.jpg') no-repeat center center/cover;
+    }
+    25%, 45% {
+        background: url('/src/images/medyczne2.jpg') no-repeat center center/cover;
+    }
+    50%, 70% {
+        background: url('/src/images/medyczne3.jpg') no-repeat center center/cover;
+    }
+    75%, 100% {
+        background: url('/src/images/medyczne4.jpg') no-repeat center center/cover;
+    }
+}
+
+/* Gradientowe przejście między logo a tłem */
 .main-header::before {
     content: "";
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 30%;
+    width: 5%;
     height: 100%;
-    background: none;
-    z-index: 0;
-    pointer-events: none; /* Uniemożliwienie interakcji z animacją */
-}
-
-/* Dodanie unoszących się bąbelków */
-.main-header .bubble {
-    position: absolute;
-    bottom: -100px;
-    width: 40px;
-    height: 40px;
-    border: 2px solid rgba(173, 216, 230, 0.5); /* Niebieskawe obramowanie */
-    border-radius: 50%;
-    animation: floatBubbles 20s linear infinite;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    z-index: 1;
     pointer-events: none;
 }
 
-/* Generowanie kilku bąbelków */
-.main-header .bubble:nth-child(2) {
-    left: 20%;
-    width: 30px;
-    height: 30px;
-    animation-duration: 25s;
-    animation-delay: 5s;
-}
-
-.main-header .bubble:nth-child(3) {
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    animation-duration: 30s;
-    animation-delay: 10s;
-}
-
-.main-header .bubble:nth-child(4) {
-    left: 70%;
-    width: 20px;
-    height: 20px;
-    animation-duration: 15s;
-    animation-delay: 3s;
-}
-
-/* Definicja kluczowych klatek dla animacji unoszących się bąbelków */
-@keyframes floatBubbles {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-1200px);
-    }
-}
-
-.main-header .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+/* Stylizacja paska nawigacyjnego */
+.navigation-bar {
+    width: 100%;
+    background-color: #ffffff; /* Kolor tła paska nawigacyjnego */
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     position: relative;
-    z-index: 1;
+    z-index: 10;
 }
 
-.main-header .logo img {
-    height: 80px; /* Ustalona wysokość logo */
-    width: auto; /* Zachowaj proporcje */
-}
-
-.main-header .navigation ul {
-    display: flex;
+.navigation-bar ul {
     list-style: none;
-    gap: 20px;
+    display: flex;
+    gap: 40px;
 }
 
-.main-header .navigation a {
+.navigation-bar a {
     text-decoration: none;
     color: #333333;
+    font-size: 1.4rem;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
-.main-header .navigation a:hover {
+.navigation-bar a:hover {
     color: #007bff;
 }
 
 /* Stylizacja dla wersji responsywnej */
 @media screen and (max-width: 768px) {
-    .main-header .container {
-        flex-direction: column;
-        align-items: center;
+    .navigation-bar {
+        padding: 10px 0;
     }
 
-    .main-header .navigation ul {
+    .navigation-bar ul {
         flex-direction: column;
-        gap: 10px;
-        margin-top: 10px;
+        gap: 15px;
+    }
+
+    .navigation-bar a {
+        font-size: 1rem;
     }
 }
+
+
