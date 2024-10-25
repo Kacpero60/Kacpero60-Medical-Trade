@@ -2,7 +2,7 @@
 .main-header {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 400px; /* Wysokość nagłówka na większych ekranach */
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -15,13 +15,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 50px; /* Dodano padding, aby logo było bardziej odsunięte od lewej krawędzi */
-    background-color: rgba(0, 123, 255, 0.1); /* Delikatne tło w odcieniu niebieskim dla logo */
+    padding-left: 50px; /* Odsunięcie logo od lewej strony */
+    background-color: rgba(0, 123, 255, 0.1); /* Tło dla logo na większych ekranach */
     z-index: 2;
 }
 
 .main-header .logo img {
-    height: 150px; /* Można dostosować wielkość logo */
+    height: 150px; /* Rozmiar logo */
     width: auto;
 }
 
@@ -31,9 +31,9 @@
     width: 100%;
     height: 100%;
     background: url('/src/images/medyczne.jpg') no-repeat center center/cover;
-    animation: slideBackground 40s infinite; /* Wydłużenie czasu trwania zdjęć */
+    animation: slideBackground 40s infinite;
     z-index: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%); /* Efekt podziału ekranu między logo a tłem */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
 }
 
 /* Animacja przejścia tła */
@@ -49,17 +49,33 @@
     }
 }
 
-/* Gradientowe przejście między logo a tłem */
-.main-header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 30%;
-    width: 5%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    z-index: 1;
-    pointer-events: none;
+/* Stylizacja responsywna dla mniejszych ekranów */
+@media screen and (max-width: 768px) {
+    .main-header {
+        height: 250px; /* Zmniejszenie wysokości nagłówka na mniejszych ekranach */
+    }
+
+    .main-header .logo-section {
+        padding-left: 0; /* Usuń padding z lewej strony dla logo */
+        background: url('/src/images/medyczne.jpg') no-repeat center center/cover; /* Ustaw tło pod logo */
+        background-size: cover; /* Dopasuj tło */
+        z-index: 1;
+    }
+
+    .main-header .logo img {
+        height: 100px; /* Zmniejsz rozmiar logo na mniejszych ekranach */
+    }
+
+    /* Ukryj tło slidera na mniejszych ekranach, ponieważ logo będzie miało już tło */
+    .header-slider {
+        display: none;
+    }
+
+    /* Logo ma być wyśrodkowane na tle */
+    .main-header .logo-section {
+        justify-content: center;
+        background-position: center;
+    }
 }
 
 /* Stylizacja paska nawigacyjnego */

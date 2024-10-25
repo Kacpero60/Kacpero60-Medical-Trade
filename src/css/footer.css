@@ -1,91 +1,98 @@
 .footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-  }
-  
-  .footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  .footer-logo img {
-    height: 60px;
-  }
-  
-  .footer-links ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-  }
-  
-  .footer-links a {
-    text-decoration: none;
-    color: #fff;
-    transition: color 0.3s ease;
-  }
-  
-  .footer-links a:hover {
-    color: #00bcd4;
-  }
-  
-  .footer-social a {
-    margin-right: 10px;
-  }
-  
-  .footer-social img {
-    height: 30px;
-    transition: transform 0.3s ease;
-  }
-  
-  .footer-social a:hover img {
-    transform: scale(1.1);
-  }
-  
-  .footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: #ccc;
-  }
-  /* Responsywność dla tabletów */
+  background-color: rgba(0, 123, 255, 0.1);
+  color: #333333;
+  padding: 20px 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-logo img {
+  height: 60px;
+}
+
+.footer-links ul {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Zwiększenie odstępów między linkami */
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #333333;
+  font-size: 1.0rem; /* Powiększenie rozmiaru czcionki */
+  font-weight: bold; /* Zwiększenie grubości czcionki dla wyróżnienia */
+  transition: color 0.3s ease, transform 0.3s ease; /* Dodanie animacji hover */
+}
+
+.footer-links a:hover {
+  color: #00bcd4;
+  transform: scale(1.1); /* Powiększenie na hover */
+}
+
+.footer-social a {
+  margin-right: 15px; /* Zwiększony odstęp między ikonami społecznościowymi */
+}
+
+.footer-social img {
+  height: 36px; /* Zwiększona wysokość ikon */
+  transition: transform 0.3s ease;
+}
+
+.footer-social a:hover img {
+  transform: scale(1.2); /* Większe powiększenie przy hover */
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #333333;
+}
+
+/* Responsywność dla tabletów */
 @media (max-width: 768px) {
-    .footer-container {
+  .footer-container {
       flex-direction: column;
       align-items: center;
-    }
-  
-    .footer-links ul {
+  }
+
+  .footer-links ul {
       flex-direction: column;
       align-items: center;
-      gap: 10px;
-    }
-  
-    .footer-social a {
+      gap: 15px; /* Zwiększony odstęp na tabletach */
+  }
+
+  .footer-social a {
       margin: 5px;
-    }
   }
-  
-  /* Responsywność dla telefonów komórkowych */
-  @media (max-width: 480px) {
-    .footer-logo img {
+}
+
+/* Responsywność dla telefonów komórkowych */
+@media (max-width: 480px) {
+  .footer-logo img {
       height: 50px;
-    }
-  
-    .footer-links ul {
-      gap: 8px;
-    }
-  
-    .footer-social img {
-      height: 25px;
-    }
-  
-    .footer-bottom {
-      font-size: 0.8rem;
-    }
   }
-  
+
+  .footer-links ul {
+      gap: 10px; /* Zmniejszony odstęp na mniejszych ekranach */
+  }
+
+  .footer-links a {
+      font-size: 1rem; /* Zmniejszenie rozmiaru czcionki na telefonach */
+  }
+
+  .footer-social img {
+      height: 30px; /* Zmniejszone ikony na telefonach */
+  }
+
+  .footer-bottom {
+      font-size: 1.0rem;
+  }
+}
