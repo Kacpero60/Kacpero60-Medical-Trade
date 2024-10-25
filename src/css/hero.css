@@ -2,7 +2,7 @@
 .hero-section {
     position: relative;
     width: 100%;
-    height: 70vh;
+    height: 60vh;
     overflow: hidden;
     background: #f8f9ff; /* Jasny kolor tła */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Cień dla oddzielenia sekcji */
