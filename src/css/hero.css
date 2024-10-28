@@ -1,3 +1,91 @@
+.manufacturers-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.section-title {
+    font-size: 2.5rem; /* Large and bold title */
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.manufacturers-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between arrows and logos */
+    width: auto;
+    max-width: 100%;
+}
+
+.logo-carousel {
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+    width: 100%;
+    scroll-behavior: smooth;
+    justify-content: center; /* Center align logos */
+}
+
+.logo-item {
+    flex: 0 0 auto;
+    width: 150px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.logo-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.logo-item:hover {
+    transform: scale(1.05); /* Slight hover effect */
+}
+
+.arrow {
+    background-color: #79c3bc;
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.arrow:hover {
+    background-color: #66a39d;
+}
+
+/* Position the arrows close to the logos */
+.left-arrow {
+    position: relative;
+    margin-right: 0px;
+    z-index: 1;
+}
+
+.right-arrow {
+    position: relative;
+    margin-left: 0px;
+    z-index: 1;
+}
+
+
+
+
+
 /* Stylizacja sekcji hero */
 .hero-section {
     position: relative;
@@ -329,6 +417,111 @@
 .info-link:hover {
     text-decoration: underline;
 }
+/* Background and Text Centering */
+.section__inner {
+    background: url('/src/images/zdjecie.jpg') no-repeat center center/cover; /* Replace with actual background image path */
+    padding: 80px 20px;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .section__headerWrapper {
+    margin-bottom: 40px;
+  }
+  
+  .section__header {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .section__text {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #d0d0d0;
+  }
+  
+  /* Orbit Layout */
+  .offer__orbits {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  .offer__logo {
+    width: 120px;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Points around the orbit */
+  .offer__point {
+    position: absolute;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    transition: transform 0.3s;
+  }
+  
+  .offer__pointInner {
+    background-color: rgba(0, 123, 255, 0.8);
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .offer__pointCircle {
+    width: 60px;
+    height: 60px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+  }
+  
+  .offer__pointCopy h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  .offer__pointCopy p {
+    font-size: 0.85rem;
+    color: #00aaff;
+  }
+  
+  /* Position each point on the orbit */
+  .offer__point--finance { top: 10%; left: 20%; }
+  .offer__point--medical { top: 10%; right: 20%; }
+  .offer__point--service { bottom: 10%; left: 20%; }
+  .offer__point--training { bottom: 10%; right: 20%; }
+  
+  /* Hover Effect */
+  .offer__point:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Animation for appearance */
+  .animatable {
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .animatable--fired {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+
+
 
 /* Media queries dla tabletów */
 @media (max-width: 1024px) {

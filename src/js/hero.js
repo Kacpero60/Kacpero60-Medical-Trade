@@ -18,3 +18,15 @@ $(window).on("load", function() {
         // Możesz tu wywołać funkcje, które są potrzebne po załadowaniu hero
     });
 });
+
+const leftArrow = document.querySelector('.left-arrow');
+const rightArrow = document.querySelector('.right-arrow');
+const logoCarousel = document.querySelector('.logo-carousel');
+
+leftArrow.addEventListener('click', () => {
+    logoCarousel.scrollBy({ left: -150, behavior: 'smooth' });
+});
+
+rightArrow.addEventListener('click', () => {
+    logoCarousel.scrollBy({ left: 150, behavior: 'smooth' });
+});
