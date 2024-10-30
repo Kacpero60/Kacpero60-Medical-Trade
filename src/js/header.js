@@ -25,3 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
         console.warn("Element #header-link nie został znaleziony.");
     }
 });
+
+// header.js
+$(document).ready(function() {
+    $('#header').load('/src/partials/header.html', function() {
+        // Dodaj obsługę kliknięcia dla linku Inquiry & Orders
+        const inquiryLink = document.getElementById("inquiry");
+        if (inquiryLink) {
+            inquiryLink.addEventListener("click", (event) => {
+                event.preventDefault();
+                loadContent('/src/partials/inquiry_orders.html', 'hero');
+            });
+        }
+    });
+});

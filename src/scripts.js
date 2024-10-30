@@ -31,8 +31,11 @@ function loadContent(filePath, targetElementId) {
     }, 500); // Czas trwania animacji
 }
 
-// Obsługa kliknięcia dla linku "Inquiry & Orders"
+// Ładowanie początkowej zawartości hero.html
 document.addEventListener("DOMContentLoaded", () => {
+    loadContent('/src/partials/hero.html', 'hero');
+  
+    // Obsługa kliknięcia dla linku "Inquiry & Orders"
     const inquiryLink = document.getElementById("inquiry");
     if (inquiryLink) {
         inquiryLink.addEventListener("click", (event) => {
