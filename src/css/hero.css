@@ -255,7 +255,7 @@
 /* Sekcja informacyjna */
 .info-section {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: stretch;
     width: 100%;
     height: 35vh;
@@ -266,9 +266,9 @@
     margin-bottom: 50px; /* Dodany margines na dole dla oddzielenia od footera */
 }
 
-/* Bloki dla desktop */
-.info-block-home, .info-block-inquiry, .info-block-contact {
-    width: 30%;
+/* Bloki dla desktop - zmienione na dwa bloki */
+.info-block-home, .info-block-inquiry {
+    width: 45%; /* Zwiększenie szerokości bloków, aby zajmowały więcej miejsca */
     padding: 20px;
     text-align: center;
     font-size: 1.2rem;
@@ -279,6 +279,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     transition: all 0.3s ease;
+    margin: 0 10px; /* Dodany mały margines między blokami */
 }
 
 .info-block-home {
@@ -289,11 +290,6 @@
 .info-block-inquiry {
     background: linear-gradient(to right, #1d5c90, #1a4875);
     color: #e0f0ff;
-}
-
-.info-block-contact {
-    background: linear-gradient(to right, #1ab2a8, #168fa1);
-    color: #ffffff;
 }
 
 .info-title {
@@ -329,121 +325,16 @@
 .info-link:hover {
     text-decoration: underline;
 }
-/* Background and Text Centering */
-.section__inner {
-    background: url('/src/images/zdjecie.jpg') no-repeat center center/cover; /* Replace with actual background image path */
-    padding: 80px 20px;
-    color: #ffffff;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .section__headerWrapper {
-    margin-bottom: 40px;
-  }
-  
-  .section__header {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #fff;
-  }
-  
-  .section__text {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    color: #d0d0d0;
-  }
-  
-  /* Orbit Layout */
-  .offer__orbits {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
-  }
-  
-  .offer__logo {
-    width: 120px;
-    margin: 0 auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  /* Points around the orbit */
-  .offer__point {
-    position: absolute;
-    text-align: center;
-    color: #fff;
-    font-weight: bold;
-    transition: transform 0.3s;
-  }
-  
-  .offer__pointInner {
-    background-color: rgba(0, 123, 255, 0.8);
-    padding: 15px;
-    border-radius: 50%;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .offer__pointCircle {
-    width: 60px;
-    height: 60px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 10px;
-  }
-  
-  .offer__pointCopy h3 {
-    margin: 0;
-    font-size: 1rem;
-  }
-  
-  .offer__pointCopy p {
-    font-size: 0.85rem;
-    color: #00aaff;
-  }
-  
-  /* Position each point on the orbit */
-  .offer__point--finance { top: 10%; left: 20%; }
-  .offer__point--medical { top: 10%; right: 20%; }
-  .offer__point--service { bottom: 10%; left: 20%; }
-  .offer__point--training { bottom: 10%; right: 20%; }
-  
-  /* Hover Effect */
-  .offer__point:hover {
-    transform: scale(1.1);
-  }
-  
-  /* Animation for appearance */
-  .animatable {
-    opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  
-  .animatable--fired {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-
-
 
 /* Media queries dla tabletów */
 @media (max-width: 1024px) {
     .info-section {
-        flex-direction: column; /* Zmiana na układ pionowy dla tabletów */
+        flex-direction: column;
         align-items: center;
         height: auto; /* Automatyczne dopasowanie wysokości */
     }
 
-    .info-block-home, .info-block-inquiry, .info-block-contact {
+    .info-block-home, .info-block-inquiry {
         width: 80%; /* Zmniejszenie szerokości bloków na tabletach */
         margin-bottom: 20px; /* Odstępy między blokami */
     }
@@ -452,12 +343,12 @@
 /* Media queries dla telefonów komórkowych */
 @media (max-width: 768px) {
     .info-section {
-        flex-direction: column; /* Zmiana na układ pionowy dla telefonów */
+        flex-direction: column;
         align-items: center;
         height: auto; /* Automatyczne dopasowanie wysokości */
     }
 
-    .info-block-home, .info-block-inquiry, .info-block-contact {
+    .info-block-home, .info-block-inquiry {
         width: 100%; /* Bloki zajmują pełną szerokość na urządzeniach mobilnych */
         margin-bottom: 20px;
     }
@@ -474,35 +365,4 @@
         padding: 8px 16px; /* Mniejsze przyciski na telefonach */
         font-size: 0.9rem; /* Zmniejszenie rozmiaru przycisku */
     }
-}
-/* Stylizacja szczegółów */
-.hero-details {
-    font-size: 1.5rem; /* Dopasowanie do rozmiaru czcionki wyżej */
-    margin-top: 20px; /* Margines na górze dla większego odstępu */
-    color: #333; /* Kolor czcionki zgodny z resztą tekstu */
-}
-
-/* Przycisk na dole po rozwinięciu szczegółów */
-.hero-button {
-    font-size: 1rem;
-    padding: 10px 20px;
-    background-color: #0078d4;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
-    margin-top: 20px; /* Ustawienie marginesu górnego, aby przycisk znajdował się poniżej szczegółów */
-}
-
-/* Wyśrodkowanie przycisku po rozwinięciu */
-.hero-details + .hero-button {
-    display: block;
-    margin: 20px auto 0; /* Ustawienie przycisku poniżej rozwiniętych szczegółów i wyśrodkowanie */
-}
-
-/* Efekt po najechaniu myszką */
-.hero-button:hover {
-    background: linear-gradient(to right, #005c9c, #002060);
-    transform: scale(1.05); /* Efekt powiększenia na hover */
 }
