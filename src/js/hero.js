@@ -1,28 +1,29 @@
 $(document).ready(function() {
-    // Ładowanie hero.html
+    // Ładowanie zawartości hero.html do sekcji #hero
     $('#hero').load('/src/partials/hero.html', function() {
-        // Po zakończeniu ładowania przypiszemy zdarzenie kliknięcia do przycisku
+        console.log("Załadowano hero.html");
+
+        // Przypisanie zdarzeń po załadowaniu zawartości
         attachToggleDetailsEvent();
     });
 });
 
-// Funkcja przypisująca zdarzenie kliknięcia do przycisku po załadowaniu sekcji hero
+// Funkcja przypisująca zdarzenie kliknięcia do przycisku po załadowaniu hero.html
 function attachToggleDetailsEvent() {
-    // Zastosowanie jQuery, aby mieć pewność, że elementy są dostępne
     const $heroButton = $("#expand-button");
     const $details = $("#hero-details");
 
     if ($heroButton.length && $details.length) {
-        // Ustawienie początkowego stanu widoczności na 'none' (ukryty)
+        // Początkowy stan widoczności detali na "none"
         $details.hide();
 
-        // Obsługa zdarzenia kliknięcia
+        // Obsługa kliknięcia
         $heroButton.on("click", function() {
             if ($details.is(":visible")) {
-                $details.slideUp();  // Dodanie efektu animacji dla estetyki
+                $details.slideUp();
                 $heroButton.text("Learn More");
             } else {
-                $details.slideDown();  // Dodanie efektu animacji dla estetyki
+                $details.slideDown();
                 $heroButton.text("Show Less");
             }
         });
@@ -30,3 +31,4 @@ function attachToggleDetailsEvent() {
         console.warn("Element #expand-button lub #hero-details nie został znaleziony.");
     }
 }
+

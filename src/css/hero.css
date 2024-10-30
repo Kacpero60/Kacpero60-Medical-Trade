@@ -475,3 +475,34 @@
         font-size: 0.9rem; /* Zmniejszenie rozmiaru przycisku */
     }
 }
+/* Stylizacja szczegółów */
+.hero-details {
+    font-size: 1.5rem; /* Dopasowanie do rozmiaru czcionki wyżej */
+    margin-top: 20px; /* Margines na górze dla większego odstępu */
+    color: #333; /* Kolor czcionki zgodny z resztą tekstu */
+}
+
+/* Przycisk na dole po rozwinięciu szczegółów */
+.hero-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin-top: 20px; /* Ustawienie marginesu górnego, aby przycisk znajdował się poniżej szczegółów */
+}
+
+/* Wyśrodkowanie przycisku po rozwinięciu */
+.hero-details + .hero-button {
+    display: block;
+    margin: 20px auto 0; /* Ustawienie przycisku poniżej rozwiniętych szczegółów i wyśrodkowanie */
+}
+
+/* Efekt po najechaniu myszką */
+.hero-button:hover {
+    background: linear-gradient(to right, #005c9c, #002060);
+    transform: scale(1.05); /* Efekt powiększenia na hover */
+}
