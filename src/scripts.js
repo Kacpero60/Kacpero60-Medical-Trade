@@ -1,19 +1,16 @@
 $(document).ready(function() {
     // Ładowanie zawartości header, hero oraz footer
     $('#header').load('/src/partials/header.html', function() {
-        // Przypisywanie zdarzeń po załadowaniu headera
-        attachHeaderEvents();
+        console.log("Załadowano header.html");
     });
 
     // Ładowanie hero.html do sekcji #hero
     loadContent('/src/partials/hero.html', 'hero', function() {
-        // Po załadowaniu przypisz zdarzenia do przycisków w hero.html
-        attachToggleDetailsEvent();
+        console.log("Załadowano hero.html");
     });
 
     $('#footer').load('/src/partials/footer.html', function() {
-        // Przypisywanie zdarzeń po załadowaniu footera
-        attachFooterEvents();
+        console.log("Załadowano footer.html");
     });
 });
 
@@ -48,60 +45,37 @@ function loadContent(filePath, targetElementId, callback) {
         .catch(error => console.error("Błąd ładowania treści:", error));
 }
 
-// Funkcja przypisująca zdarzenie kliknięcia do przycisku po załadowaniu sekcji hero
-function attachToggleDetailsEvent() {
-    // Zastosowanie jQuery, aby mieć pewność, że elementy są dostępne
-    const $heroButton = $("#expand-button");
+// Delegacja zdarzeń do przycisków i linków dynamicznie ładowanych
+$(document).on("click", "#expand-button", function() {
     const $details = $("#hero-details");
-
-    if ($heroButton.length && $details.length) {
-        // Ustawienie początkowego stanu widoczności na 'none' (ukryty)
-        $details.hide();
-
-        // Obsługa zdarzenia kliknięcia
-        $heroButton.on("click", function() {
-            if ($details.is(":visible")) {
-                $details.slideUp();  // Dodanie efektu animacji dla estetyki
-                $heroButton.text("Learn More");
-            } else {
-                $details.slideDown();  // Dodanie efektu animacji dla estetyki
-                $heroButton.text("Show Less");
-            }
-        });
+    if ($details.is(":visible")) {
+        $details.slideUp();
+        $(this).text("Learn More");
     } else {
-        console.warn("Element #expand-button lub #hero-details nie został znaleziony.");
+        $details.slideDown();
+        $(this).text("Show Less");
     }
-}
+});
 
-// Funkcja przypisująca zdarzenia do elementów header
-function attachHeaderEvents() {
-    const inquiryLinkHeader = document.querySelector('a[href="#products"]');
-    if (inquiryLinkHeader) {
-        inquiryLinkHeader.addEventListener("click", function(event) {
-            event.preventDefault();
-            loadContent('/src/partials/inquiry_orders.html', 'hero', attachToggleDetailsEvent);
-        });
-    }
+$(document).on("click", "#contact-us-button", function(event) {
+    event.preventDefault();
+    loadContent('/src/partials/inquiry_orders.html', 'hero');
+});
 
-    const homeLink = document.querySelector('a[href="#about-us"]');
-    if (homeLink) {
-        homeLink.addEventListener("click", function(event) {
-            event.preventDefault();
-            loadContent('/src/partials/hero.html', 'hero', attachToggleDetailsEvent);
-        });
-    }
-}
+$(document).on("click", 'a[href="#products"]', function(event) {
+    event.preventDefault();
+    loadContent('/src/partials/inquiry_orders.html', 'hero');
+});
 
-// Funkcja przypisująca zdarzenia do elementów footer
-function attachFooterEvents() {
-    const inquiryLinkFooter = document.querySelector('#inquiry-footer');
-    if (inquiryLinkFooter) {
-        inquiryLinkFooter.addEventListener("click", function(event) {
-            event.preventDefault();
-            loadContent('/src/partials/inquiry_orders.html', 'hero', attachToggleDetailsEvent);
-        });
-    }
-}
+$(document).on("click", 'a[href="#about-us"]', function(event) {
+    event.preventDefault();
+    loadContent('/src/partials/hero.html', 'hero');
+});
+
+$(document).on("click", "#inquiry-footer", function(event) {
+    event.preventDefault();
+    loadContent('/src/partials/inquiry_orders.html', 'hero');
+});
 
 // Funkcja do dodawania pliku CSS
 function addCSS(href) {

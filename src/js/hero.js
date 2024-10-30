@@ -31,4 +31,3 @@ function attachToggleDetailsEvent() {
         console.warn("Element #expand-button lub #hero-details nie został znaleziony.");
     }
 }
-
