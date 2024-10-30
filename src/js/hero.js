@@ -14,3 +14,15 @@ $(document).ready(function() {
 });
 
 
+document.addEventListener("DOMContentLoaded", () => {
+    const heroButton = document.querySelector(".hero-button");
+
+    // Sprawdzenie, czy element istnieje, zanim dodamy nasłuch zdarzeń
+    if (heroButton) {
+        heroButton.addEventListener("click", () => {
+            console.log("Kliknięto przycisk Hero!");
+        });
+    } else {
+        console.warn("Element .hero-button nie został znaleziony.");
+    }
+});
