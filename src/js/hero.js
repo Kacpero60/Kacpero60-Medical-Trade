@@ -1,3 +1,17 @@
+// Funkcja rozwijająca szczegóły po kliknięciu w "Learn More"
+function toggleDetails() {
+    const details = document.getElementById("hero-details");
+    const button = document.getElementById("expand-button");
+
+    if (details.style.display === "none" || details.style.display === "") {
+        details.style.display = "block";
+        button.textContent = "Show Less";
+    } else {
+        details.style.display = "none";
+        button.textContent = "Learn More";
+    }
+}
+
 // header.js
 $(document).ready(function() {
     $('#header').load('/src/partials/header.html');
@@ -5,7 +19,10 @@ $(document).ready(function() {
 
 // hero.js
 $(document).ready(function() {
-    $('#hero').load('/src/partials/hero.html');
+    $('#hero').load('/src/partials/hero.html', function() {
+        // Kod wykonuje się po zakończeniu załadowania hero.html
+        attachToggleDetailsEvent();
+    });
 });
 
 // footer.js
@@ -13,28 +30,20 @@ $(document).ready(function() {
     $('#footer').load('/src/partials/footer.html');
 });
 
+// Funkcja przypisująca zdarzenie kliknięcia do przycisku po załadowaniu sekcji hero
+function attachToggleDetailsEvent() {
+    // Upewnij się, że HTML został załadowany, zanim wyszukasz elementy
+    setTimeout(() => {
+        const heroButton = document.querySelector("#expand-button");
+        const details = document.querySelector("#hero-details");
 
-document.addEventListener("DOMContentLoaded", () => {
-    const heroButton = document.querySelector(".hero-button");
+        if (heroButton && details) {
+            // Ustawienie początkowego stanu widoczności na 'none' (ukryty)
+            details.style.display = "none";
 
-    // Sprawdzenie, czy element istnieje, zanim dodamy nasłuch zdarzeń
-    if (heroButton) {
-        heroButton.addEventListener("click", () => {
-            console.log("Kliknięto przycisk Hero!");
-        });
-    } else {
-        console.warn("Element .hero-button nie został znaleziony.");
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    const heroButton = document.querySelector(".hero-button");
-    if (heroButton) {
-        heroButton.addEventListener("click", () => {
-            console.log("Kliknięto przycisk Hero!");
-            // tutaj możesz dodać inne akcje
-        });
-    } else {
-        console.warn("Element .hero-button nie został znaleziony. Sprawdź, czy klasa jest poprawna.");
-    }
-});
+            heroButton.addEventListener("click", toggleDetails);
+        } else {
+            console.warn("Element #expand-button lub #hero-details nie został znaleziony.");
+        }
+    }, 200); // Dodanie opóźnienia, aby upewnić się, że HTML się załadował
+}
