@@ -1,46 +1,52 @@
 $(document).ready(function() {
-    // Load header content
-    $('#header').load('/src/partials/header.html');
-  
-    // Load about-us section content
-    $('#about-us').load('/src/partials/about-us.html');
-  
-    // Load footer content
+    // Ładowanie zawartości header, hero oraz footer
+    $('#header').load('/src/partials/header.html', function() {
+        // Po załadowaniu header.html, dodaj nasłuch na link "Inquiry & Orders"
+        const inquiryLink = document.querySelector('a[href="#products"]');
+        if (inquiryLink) {
+            inquiryLink.addEventListener("click", function(event) {
+                event.preventDefault();
+                loadContent('/src/partials/inquiry_orders.html', 'hero'); // Ładowanie inquiry_orders.html do #hero
+            });
+        }
+    });
+
     $('#footer').load('/src/partials/footer.html');
+    loadContent('/src/partials/hero.html', 'hero'); // Początkowe ładowanie hero.html do #hero
 });
 
 // Funkcja do dynamicznego ładowania plików HTML do kontenera
 function loadContent(filePath, targetElementId) {
     const targetElement = document.getElementById(targetElementId);
-
-    // Dodaj efekt zanikania (opcjonalne)
-    targetElement.classList.add("fade-out");
-
-    // Opóźnienie dla efektu zanikania
-    setTimeout(() => {
-        fetch(filePath)
-            .then(response => {
-                if (!response.ok) throw new Error(`Błąd: ${response.status}`);
-                return response.text();
-            })
-            .then(data => {
-                targetElement.innerHTML = data;
-                targetElement.classList.remove("fade-out"); // Usuń efekt zanikania po załadowaniu
-            })
-            .catch(error => console.error("Błąd ładowania treści:", error));
-    }, 500); // Czas trwania animacji
+    fetch(filePath)
+        .then(response => {
+            if (!response.ok) throw new Error(`Błąd: ${response.status}`);
+            return response.text();
+        })
+        .then(data => {
+            targetElement.innerHTML = data;
+            console.log(`Zawartość załadowana do ${targetElementId}`);
+        })
+        .catch(error => console.error("Błąd ładowania treści:", error));
 }
+$(document).ready(function() {
+    // Po załadowaniu header.html, dodaj nasłuch na link Home
+    $('#header').load('/src/partials/header.html', function() {
+        const homeLink = document.querySelector('a[href="#about-us"]');
+        if (homeLink) {
+            homeLink.addEventListener("click", function(event) {
+                event.preventDefault();
+                loadContent('/src/partials/hero.html', 'hero'); // Ładowanie hero.html do #hero przy kliknięciu Home
+            });
+        }
 
-// Ładowanie początkowej zawartości hero.html
-document.addEventListener("DOMContentLoaded", () => {
-    loadContent('/src/partials/hero.html', 'hero');
-  
-    // Obsługa kliknięcia dla linku "Inquiry & Orders"
-    const inquiryLink = document.getElementById("inquiry");
-    if (inquiryLink) {
-        inquiryLink.addEventListener("click", (event) => {
-            event.preventDefault();
-            loadContent('/src/partials/inquiry_orders.html', 'hero'); // Załaduj inquiry_orders.html do #hero
-        });
-    }
+        // Nasłuch dla linku Inquiry & Orders
+        const inquiryLink = document.querySelector('a[href="#products"]');
+        if (inquiryLink) {
+            inquiryLink.addEventListener("click", function(event) {
+                event.preventDefault();
+                loadContent('/src/partials/inquiry_orders.html', 'hero'); // Ładowanie inquiry_orders.html do #hero
+            });
+        }
+    });
 });

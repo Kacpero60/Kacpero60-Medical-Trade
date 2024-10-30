@@ -26,3 +26,15 @@ document.addEventListener("DOMContentLoaded", () => {
         console.warn("Element .hero-button nie został znaleziony.");
     }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const heroButton = document.querySelector(".hero-button");
+    if (heroButton) {
+        heroButton.addEventListener("click", () => {
+            console.log("Kliknięto przycisk Hero!");
+            // tutaj możesz dodać inne akcje
+        });
+    } else {
+        console.warn("Element .hero-button nie został znaleziony. Sprawdź, czy klasa jest poprawna.");
+    }
+});

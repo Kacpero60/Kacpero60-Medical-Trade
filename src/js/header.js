@@ -39,3 +39,15 @@ $(document).ready(function() {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const headerLink = document.getElementById("header-link");
+    if (headerLink) {
+        headerLink.addEventListener("click", () => {
+            console.log("Kliknięto link w nagłówku!");
+            // tutaj możesz dodać inne akcje
+        });
+    } else {
+        console.warn("Element #header-link nie został znaleziony. Sprawdź, czy identyfikator jest poprawny.");
+    }
+});
