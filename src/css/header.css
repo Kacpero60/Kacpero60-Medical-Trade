@@ -94,52 +94,14 @@
     list-style: none;
     display: flex;
     gap: 40px;
+    padding: 0;
+    margin: 0;
+    align-items: center; /* Wyrównanie elementów w pionie */
 }
 
-.navigation-bar a {
-    text-decoration: none;
-    color: #333333;
-    font-size: 1.4rem;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.navigation-bar a:hover {
-    color: #007bff;
-}
-
-/* Stylizacja dla wersji responsywnej */
-@media screen and (max-width: 768px) {
-    .navigation-bar {
-        padding: 10px 0;
-    }
-
-    .navigation-bar ul {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .navigation-bar a {
-        font-size: 1rem;
-    }
-}
-
-/* General styling for the navigation bar */
-.navigation-bar {
-    width: 100%;
-    background-color: #ffffff;
-    padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.navigation-bar li {
     display: flex;
-    justify-content: center;
-    position: relative;
-    z-index: 10;
-}
-
-.navigation-bar ul {
-    list-style: none;
-    display: flex;
-    gap: 40px;
+    align-items: center; /* Ustawienie elementów w liście w jednej linii */
 }
 
 .navigation-bar a {
@@ -149,22 +111,22 @@
     font-weight: bold;
     transition: color 0.3s ease;
     display: flex;
-    align-items: center; /* Align text and icon */
-    gap: 8px; /* Space between text and icon */
+    align-items: center; /* Wyrównanie ikony i tekstu w pionie */
+    gap: 10px; /* Odstęp między tekstem a ikoną */
 }
 
 .navigation-bar a:hover {
     color: #007bff;
 }
 
-/* Styling for the phone icon */
+/* Stylizacja ikony telefonu */
 .phone-icon {
-    width: 30px;
-    height: 30px;
+    width: 20px; /* Mniejszy rozmiar, aby nie wpływała na wysokość tekstu */
+    height: 20px;
     transition: transform 0.3s ease;
 }
 
-/* Shaking animation */
+/* Animacja potrząsania ikoną */
 @keyframes shake {
     0% { transform: rotate(0); }
     25% { transform: rotate(5deg); }
@@ -173,13 +135,13 @@
     100% { transform: rotate(0); }
 }
 
-/* Apply the shaking animation on hover */
-.contact-link:hover .phone-icon {
+/* Zastosowanie animacji potrząsania przy hover */
+.navigation-bar a:hover .phone-icon {
     animation: shake 0.5s ease-in-out;
     animation-iteration-count: infinite;
 }
 
-/* Responsive styling */
+/* Stylizacja responsywna dla mniejszych ekranów */
 @media screen and (max-width: 768px) {
     .navigation-bar {
         padding: 10px 0;

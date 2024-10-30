@@ -6,7 +6,7 @@
 
 .footer-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
@@ -17,10 +17,16 @@
   height: 60px;
 }
 
+.footer-links {
+  margin: 10px 0; /* Dodany margines dla lepszego odstępu */
+}
+
 .footer-links ul {
   list-style: none;
   display: flex;
   gap: 20px; /* Zwiększenie odstępów między linkami */
+  padding: 0;
+  margin: 0;
 }
 
 .footer-links a {
@@ -29,6 +35,9 @@
   font-size: 1.0rem; /* Powiększenie rozmiaru czcionki */
   font-weight: bold; /* Zwiększenie grubości czcionki dla wyróżnienia */
   transition: color 0.3s ease, transform 0.3s ease; /* Dodanie animacji hover */
+  display: flex;
+  align-items: center; /* Wyrównanie ikony do środka tekstu */
+  gap: 5px; /* Odstęp między tekstem a ikoną */
 }
 
 .footer-links a:hover {
@@ -36,22 +45,29 @@
   transform: scale(1.1); /* Powiększenie na hover */
 }
 
-.footer-social a {
-  margin-right: 15px; /* Zwiększony odstęp między ikonami społecznościowymi */
-}
-
-.footer-social img {
-  height: 36px; /* Zwiększona wysokość ikon */
+/* Stylizacja ikony telefonu */
+.phone-icon-footer {
+  width: 16px; /* Mniejszy rozmiar, aby nie wpływała na wysokość tekstu */
+  height: 16px;
   transition: transform 0.3s ease;
 }
 
-.footer-social a:hover img {
-  transform: scale(1.2); /* Większe powiększenie przy hover */
+.footer-links a:hover .phone-icon-footer {
+  animation: shake 0.5s ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: rotate(0); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+  100% { transform: rotate(0); }
 }
 
 .footer-bottom {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 0.9rem;
   color: #333333;
 }
@@ -59,40 +75,33 @@
 /* Responsywność dla tabletów */
 @media (max-width: 768px) {
   .footer-container {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .footer-links ul {
-      flex-direction: column;
-      align-items: center;
-      gap: 15px; /* Zwiększony odstęp na tabletach */
-  }
-
-  .footer-social a {
-      margin: 5px;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Zwiększony odstęp na tabletach */
   }
 }
 
 /* Responsywność dla telefonów komórkowych */
 @media (max-width: 480px) {
   .footer-logo img {
-      height: 50px;
+    height: 50px;
   }
 
   .footer-links ul {
-      gap: 10px; /* Zmniejszony odstęp na mniejszych ekranach */
+    gap: 10px; /* Zmniejszony odstęp na mniejszych ekranach */
   }
 
   .footer-links a {
-      font-size: 1rem; /* Zmniejszenie rozmiaru czcionki na telefonach */
-  }
-
-  .footer-social img {
-      height: 30px; /* Zmniejszone ikony na telefonach */
+    font-size: 1rem; /* Zmniejszenie rozmiaru czcionki na telefonach */
   }
 
   .footer-bottom {
-      font-size: 1.0rem;
+    font-size: 1.0rem;
+    margin-top: 10px;
   }
 }
