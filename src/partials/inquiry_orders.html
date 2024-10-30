@@ -1,12 +1,61 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>inquiry orders</title>
+    <title>Inquiry & Orders</title>
+    <link rel="stylesheet" href="inquiry_orders.css"> <!-- Łączenie pliku CSS -->
 </head>
 <body>
-    <h1>napis</h1>
+    <div id="inquiry-container">
+        <!-- Formularz Inquiry & Orders -->
+        <div class="form-container">
+            <h1>Inquiry & Orders</h1>
+            <p>We will be very pleased if you join the group of our customers. Send us information and we will contact you as soon as possible.</p>
+            <form id="inquiry-form">
+                <div class="form-group">
+                    <img src="/src/images/user.svg" alt="User Icon">
+                    <input type="text" placeholder="Company name" name="company">
+                </div>
+                <div class="form-group">
+                    <img src="/src/images/envelope.svg" alt="Envelope Icon">
+                    <input type="email" placeholder="Email *" name="email" required>
+                </div>
+                <div class="form-group">
+                    <img src="/src/images/building.svg" alt="Building Icon">
+                    <input type="text" placeholder="City zip code" name="zipcode">
+                    <img src="/src/images/globe.svg" alt="Globe Icon">
+                    <input type="text" placeholder="Country" name="country">
+                </div>
+                <div class="form-group">
+                    <img src="/src/images/search.svg" alt="Search Icon">
+                    <input type="text" placeholder="Product name" name="product">
+                </div>
+                <div class="form-group">
+                    <img src="/src/images/grid.svg" alt="Grid Icon">
+                    <input type="text" placeholder="Reference / code" name="reference">
+                </div>
+                <div class="form-group">
+                    <img src="/src/images/download.svg" alt="Download Icon">
+                    <input type="number" placeholder="Quantity" name="quantity">
+                </div>
+                <div class="form-group">
+                    <img src="/src/images/truck-side.svg" alt="Truck Icon">
+                    <select name="shipping">
+                        <option value="">Select</option>
+                        <option value="standard">Standard Shipping</option>
+                        <option value="express">Express Shipping</option>
+                    </select>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" name="policy" required>
+                    <label> I accept the <a href="#">Privacy Policy</a>.</label>
+                </div>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="inquiry_orders.js"></script>
 </body>
 </html>
