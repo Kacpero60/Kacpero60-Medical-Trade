@@ -1,80 +1,120 @@
-/* Stylizacja kontenera formularza */
+/* Stylizacja głównego kontenera */
 #inquiry-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Ustawienie kolumnowe */
     align-items: center;
-    min-height: 100vh;
     padding: 20px;
-    background: linear-gradient(135deg, #e0f2fc, #d2ebf7);
+    background: linear-gradient(135deg, #f8f9fa, #eef2f5); /* jaśniejsze tło */
     position: relative;
     overflow: hidden;
+    min-height: 100vh;
 }
 
-/* Kontener na formularz i obrazy */
+/* Kontener na formularz i sekcję kontaktową */
 .content-wrapper {
     display: flex;
-    align-items: flex-start;
-    gap: 40px; /* Zwiększona odległość między formularzem a obrazami */
-    max-width: 1200px;
-    width: 90%;
-    margin: 0 auto; /* Wycentrowanie całości */
-    justify-content: center; /* Przesunięcie zawartości na środek */
-}
-
-/* Stylizacja formularza */
-.form-container {
+    flex-direction: row; /* Ustawienie obok siebie */
+    align-items: flex-start; /* Wyrównanie do góry */
+    gap: 20px; /* Odstęp między formularzem a sekcją kontaktową */
+    max-width: 900px;
+    width: 100%;
     position: relative;
-    z-index: 2; /* Formularz zawsze nad bąbelkami */
-    background-color: #f0f8ff;
-    padding: 3rem;
-    border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    max-width: 500px; /* Powiększona szerokość formularza */
-    width: 100%;
-    opacity: 1; /* Formularz jest widoczny od razu */
-    transform: scale(1);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    flex-shrink: 0; /* Utrzymuje stałą szerokość formularza */
+    z-index: 2;
+    justify-content: center; /* Wyśrodkowanie zawartości */
 }
 
-/* Stylizacja kontenera zdjęć */
-.image-container {
+/* Sekcja formularza */
+.form-container {
+    background-color: #ffffff; /* jaśniejsze tło */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 550px;
+    width: 100%;
+}
+
+/* Sekcja kontaktowa */
+.contact-info {
+    background-color: transparent; /* Bez białego tła */
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 650px; /* Zwiększony maksymalny rozmiar */
+    text-align: center;
+}
+
+/* Stylizacja okienek dla każdej informacji kontaktowej */
+.contact-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dwa kafelki w jednym rzędzie */
+    gap: 1.5rem; /* Odstęp między kafelkami */
+}
+
+/* Ujednolicone style dla kafelków kontaktowych */
+.contact-item {
+    background-color: #f1f5fb; /* Delikatne tło wyróżniające okienko */
+    padding: 1rem;
+    border-radius: 6px;
     display: flex;
-    flex-direction: column;
-    gap: 20px; /* Minimalny odstęp między zdjęciami dla estetyki */
-    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: none; /* Usunięcie ramki */
+    width: 100%; /* Pełna szerokość */
 }
 
-.image-container img {
-    width: 100%;
-    max-width: 300px; /* Można dostosować szerokość zdjęć */
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+/* Stylizacja reszty */
+.contact-item img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #e0f2fc;
+    padding: 0.5rem;
+}
+
+.contact-item h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1d3557;
+    margin: 0;
+}
+
+.contact-item p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.contact-item a {
+    color: #007acc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
 }
 
 /* Stylizacja grupy formularza */
-#inquiry-container .form-group {
+.form-group {
     display: flex;
     align-items: center;
-    margin-bottom: 1.5rem; /* Większy margines między grupami formularza */
+    margin-bottom: 1.2rem;
     border: 1px solid #b3d1f2;
     padding: 0.6rem;
     border-radius: 4px;
     background: #eaf4fb;
 }
 
-#inquiry-container .form-group img {
+.form-group img {
     width: 24px;
     height: 24px;
     margin-right: 0.7rem;
 }
 
-#inquiry-container input[type="text"],
-#inquiry-container input[type="email"],
-#inquiry-container input[type="number"],
-#inquiry-container select {
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
     border: none;
     outline: none;
     flex: 1;
@@ -84,8 +124,8 @@
     color: #333;
 }
 
-/* Stylizacja przycisku i linków */
-#inquiry-container button {
+/* Stylizacja przycisku */
+button {
     width: 100%;
     padding: 1rem;
     background-color: #007acc;
@@ -97,53 +137,42 @@
     transition: background-color 0.3s ease;
 }
 
-#inquiry-container button:hover {
+button:hover {
     background-color: #005fa3;
 }
 
-#inquiry-container a {
-    color: #005fa3; /* Ciemniejszy odcień dla lepszego kontrastu */
+/* Stylizacja linków */
+.contact-info a {
+    color: #005fa3;
     text-decoration: none;
 }
 
-#inquiry-container a:hover {
+.contact-info a:hover {
     text-decoration: underline;
 }
 
-/* Poprawa stylu checkboxa */
-.form-group.checkbox-group {
+/* Stylizacja checkboxa */
+.checkbox-group {
     display: flex;
     align-items: center;
-    gap: 8px; /* Minimalny odstęp między checkboxem a etykietą */
-    padding: 0; /* Usuń padding */
-    margin-bottom: 1rem; /* Ustaw margines na dole */
-    background: none; /* Usuń tło */
-    border: none; /* Usuń obramowanie */
+    gap: 8px;
+    margin-bottom: 1rem;
 }
 
 .checkbox-group input[type="checkbox"] {
-    width: auto; /* Usuń domyślną szerokość, aby checkbox nie był rozciągany */
-    height: auto; /* Usuń domyślną wysokość */
-    margin: 0; /* Usuń marginesy */
-    flex-shrink: 0; /* Zapobiega rozciąganiu */
-    cursor: pointer; /* Dodaj kursor jako wskazówkę dla użytkownika */
-    box-sizing: border-box; /* Upewnia się, że nie zostaną dodane dodatkowe marginesy ani padding */
+    width: auto;
+    height: auto;
+    cursor: pointer;
 }
 
-.checkbox-group label {
-    font-size: 1rem;
-    color: #333;
-    line-height: 1.2; /* Dopasowanie wysokości linii, aby etykieta była równo z checkboxem */
-}
-
-/* Animacja unoszących się bąbelków w tle */
+/* Animacja bąbelków w tle */
 .inquiry-background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Bąbelki poniżej treści */
+    z-index: 0;
     pointer-events: none;
     overflow: hidden;
 }
@@ -153,20 +182,11 @@
     bottom: -100px;
     width: 40px;
     height: 40px;
-    background: rgba(173, 216, 230, 0.5); /* Zwiększenie przezroczystości bąbelków */
+    background: rgba(173, 216, 230, 0.5);
     border-radius: 50%;
     animation: floatBubble 14s linear infinite;
 }
 
-.bubble:nth-child(2) {
-    left: 10%;
-    width: 35px;
-    height: 35px;
-    animation-duration: 16s;
-    animation-delay: 1s;
-}
-
-/* Dalsza stylizacja bąbelków */
 @keyframes floatBubble {
     0% {
         transform: translateY(0);
@@ -176,26 +196,9 @@
     }
 }
 
-/* Poprawka responsywności */
+/* Responsywność */
 @media (max-width: 768px) {
     .content-wrapper {
-        flex-direction: column; /* Układ pionowy dla mniejszych ekranów */
-        align-items: center;
-        gap: 20px; /* Odstęp między formularzem a zdjęciami na mniejszych ekranach */
-    }
-
-    .image-container {
-        margin-left: 0;
-        width: 100%;
-    }
-
-    .form-container {
         width: 90%;
-        padding: 1.5rem; /* Mniejszy padding na urządzeniach mobilnych */
-    }
-
-    .image-container img {
-        max-width: 100%;
-        height: auto;
     }
 }

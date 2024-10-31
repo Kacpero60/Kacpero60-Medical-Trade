@@ -140,6 +140,43 @@
     animation: shake 0.5s ease-in-out;
     animation-iteration-count: infinite;
 }
+/* Stylizacja rozwijanego menu */
+.navigation-bar .dropdown {
+    position: relative;
+}
+
+.navigation-bar .dropdown-content {
+    position: absolute;
+    top: 100%; /* Otwiera menu tuż pod "SPECIFICATION" */
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    margin-top: 5px; /* Odstęp, aby menu nie przylegało bezpośrednio */
+    opacity: 0; /* Ukrycie na początku */
+    transform: translateY(-10px); /* Przesunięcie do góry dla efektu wysuwania */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Dodanie animacji */
+}
+
+.navigation-bar .dropdown-content a {
+    color: #333;
+    padding: 8px 12px; /* Zmniejszony padding dla mniejszych podlinków */
+    font-size: 1.2rem; /* Zmniejszony rozmiar czcionki */
+    text-decoration: none;
+    display: block;
+}
+
+.navigation-bar .dropdown-content a:hover {
+    background-color: #f1f1f1;
+    border-bottom: 2px solid #007bff; /* Pasek wskaźnika na hover */
+}
+
+/* Pokaż menu rozwijane przy najechaniu */
+.navigation-bar .dropdown:hover .dropdown-content {
+    opacity: 1; /* Ustaw pełną widoczność */
+    transform: translateY(0); /* Przywrócenie pozycji dla płynnego efektu */
+}
 
 /* Stylizacja responsywna dla mniejszych ekranów */
 @media screen and (max-width: 768px) {
