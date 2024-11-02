@@ -13,7 +13,7 @@
 /* Kontener na formularz i sekcję kontaktową */
 .content-wrapper {
     display: flex;
-    flex-direction: row; /* Ustawienie obok siebie na dużych ekranach */
+    flex-direction: row-reverse; /* Formularz po prawej stronie */
     align-items: flex-start;
     gap: 20px;
     max-width: 900px;
@@ -31,23 +31,21 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     max-width: 550px;
     width: 100%;
-    order: 2; /* Ustawienie formularza po prawej stronie na dużych ekranach */
 }
 
 /* Sekcja kontaktowa */
 .contact-info {
     background-color: transparent;
-    padding: 3rem;
+    padding: 2rem;
     border-radius: 8px;
     width: 100%;
     max-width: 700px;
     text-align: center;
-    order: 1; /* Ustawienie sekcji kontaktowej po lewej stronie na dużych ekranach */
 }
 
 /* Tytuł w sekcji kontaktowej */
 .contact-info h2 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #1d3557;
     margin-bottom: 1.5rem;
@@ -57,39 +55,41 @@
 .contact-section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 /* Ujednolicone style dla kafelków kontaktowych */
 .contact-item {
     background-color: #f1f5fb;
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 6px;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    box-shadow: none;
+    gap: 1rem;
     width: 100%;
 }
 
+/* Stylizacja ikon */
 .contact-item img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-color: #e0f2fc;
-    padding: 0.75rem;
+    padding: 0.5rem;
 }
 
+/* Stylizacja tytułów */
 .contact-item h3 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: bold;
     color: #1d3557;
     margin: 0;
 }
 
+/* Stylizacja tekstu */
 .contact-item p {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #333;
 }
 
@@ -107,17 +107,17 @@
 .form-group {
     display: flex;
     align-items: center;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     border: 1px solid #b3d1f2;
-    padding: 0.6rem;
+    padding: 0.5rem;
     border-radius: 4px;
     background: #eaf4fb;
 }
 
 .form-group img {
-    width: 24px;
-    height: 24px;
-    margin-right: 0.7rem;
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
 }
 
 input[type="text"],
@@ -128,7 +128,7 @@ select {
     outline: none;
     flex: 1;
     background: transparent;
-    padding: 0.6rem;
+    padding: 0.5rem;
     font-size: 1rem;
     color: #333;
 }
@@ -136,7 +136,7 @@ select {
 /* Stylizacja przycisku */
 button {
     width: 100%;
-    padding: 1rem;
+    padding: 0.8rem;
     background-color: #007acc;
     color: #fff;
     font-size: 1rem;
@@ -148,30 +148,6 @@ button {
 
 button:hover {
     background-color: #005fa3;
-}
-
-/* Stylizacja linków */
-.contact-info a {
-    color: #005fa3;
-    text-decoration: none;
-}
-
-.contact-info a:hover {
-    text-decoration: underline;
-}
-
-/* Stylizacja checkboxa */
-.checkbox-group {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 1rem;
-}
-
-.checkbox-group input[type="checkbox"] {
-    width: auto;
-    height: auto;
-    cursor: pointer;
 }
 
 /* Animacja bąbelków w tle */
@@ -189,8 +165,8 @@ button:hover {
 .bubble {
     position: absolute;
     bottom: -100px;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     background: rgba(173, 216, 230, 0.5);
     border-radius: 50%;
     animation: floatBubble 14s linear infinite;
@@ -208,19 +184,186 @@ button:hover {
 /* Responsywność */
 @media (max-width: 768px) {
     .content-wrapper {
-        flex-direction: column-reverse; /* Zamienia kolejność na urządzeniach mobilnych */
+        flex-direction: column;
+        width: 90%;
     }
-
-    .form-container, .contact-info {
-        width: 100%;
+    
+    .contact-info {
+        order: -1; /* Kontakt wyświetlany na górze */
         margin-bottom: 20px;
     }
 
-    .form-container {
-        order: 2; /* Formularz na dole */
+    .form-container,
+    .contact-info {
+        max-width: 100%;
     }
 
+    .contact-info h2 {
+        font-size: 1.8rem;
+    }
+
+    .contact-item h3 {
+        font-size: 1.3rem;
+    }
+
+    .contact-item img {
+        width: 36px;
+        height: 36px;
+    }
+}
+/* Poprawiona responsywność dla iPhone'ów i Samsungów od wersji 11 w górę */
+@media (max-width: 425px) {
+    /* Ustawienie kontenera w pionie na mniejszych ekranach */
+    .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    /* Sekcja kontaktowa wyświetlana na górze */
     .contact-info {
-        order: 1; /* Contact info na górze */
+        order: -1;
+        max-width: 90%;
+        margin-bottom: 20px;
+        padding: 1.5rem;
+    }
+
+    /* Formularz umieszczony poniżej sekcji kontaktowej */
+    .form-container {
+        max-width: 90%;
+        margin-bottom: 20px;
+        padding: 1.5rem;
+    }
+
+    /* Stylizacja dla kontaktu, aby tekst i ikony były bardziej kompaktowe */
+    .contact-info h2 {
+        font-size: 1.6rem;
+    }
+
+    .contact-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .contact-item img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .contact-item p,
+    .contact-item a {
+        font-size: 0.9rem;
+    }
+
+    /* Formularz - poprawa odstępów dla mniejszych ekranów */
+    .form-group {
+        padding: 0.4rem;
+    }
+
+    .form-group img {
+        width: 20px;
+        height: 20px;
+        margin-right: 0.5rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+}
+/* Poprawiona responsywność dla małych ekranów (iPhone, Samsung) */
+@media (max-width: 768px) {
+    #inquiry-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    /* Sekcja kontaktowa wyświetlana na górze na małych ekranach */
+    .contact-info {
+        order: -1;
+        max-width: 90%;
+        margin-bottom: 20px;
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    /* Formularz wyświetlany poniżej sekcji kontaktowej */
+    .form-container {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+
+    /* Stylizacja dla mniejszych ekranów */
+    .contact-info h2 {
+        font-size: 1.8rem;
+    }
+
+    .contact-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .contact-item img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .contact-item p,
+    .contact-item a {
+        font-size: 1rem;
+    }
+
+    /* Formularz - poprawa odstępów dla mniejszych ekranów */
+    .form-group {
+        padding: 0.4rem;
+    }
+
+    .form-group img {
+        width: 20px;
+        height: 20px;
+        margin-right: 0.5rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+}
+/* Poprawa dla sekcji Contact with Us na małych ekranach */
+@media (max-width: 768px) {
+    .contact-info {
+        width: 100%; /* Ustawienie pełnej szerokości na małych ekranach */
+        padding: 1rem; /* Mniejsze paddingi, aby dostosować do mniejszych ekranów */
+        box-sizing: border-box; /* Upewnia się, że padding nie wpływa na szerokość */
+    }
+    
+    .contact-section {
+        grid-template-columns: 1fr; /* Jedna kolumna na małych ekranach */
+        gap: 1rem; /* Zmniejszenie odstępu między elementami */
+    }
+    
+    .content-wrapper {
+        padding: 0 10px; /* Dodanie paddingu, aby dać trochę marginesu po bokach */
+        box-sizing: border-box;
     }
 }
