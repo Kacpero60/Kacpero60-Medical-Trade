@@ -94,3 +94,12 @@ function removeCSS(href) {
         link.remove();
     }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const tocButton = document.querySelector(".toc-toggle-button");
+    const tocContent = document.querySelector(".toc-content");
+
+    tocButton.addEventListener("click", function () {
+        tocContent.classList.toggle("show"); // Przełącza klasę 'show', aby pokazać/ukryć zawartość
+    });
+});

@@ -6,6 +6,11 @@ $(document).ready(function() {
         // Przypisanie zdarzeń po załadowaniu zawartości
         attachToggleDetailsEvent();
     });
+
+    // Toggle for Table of Contents
+    $(".toc-toggle-button").on("click", function() {
+        $(".toc-content").slideToggle();
+    });
 });
 
 // Funkcja przypisująca zdarzenie kliknięcia do przycisku po załadowaniu hero.html
@@ -31,3 +36,4 @@ function attachToggleDetailsEvent() {
         console.warn("Element #expand-button lub #hero-details nie został znaleziony.");
     }
 }
+
