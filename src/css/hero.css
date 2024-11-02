@@ -325,6 +325,101 @@
 .info-link:hover {
     text-decoration: underline;
 }
+/* New section for "Specializations" */
+.specialization-section {
+    padding: 50px 0;
+    background: #f0f8ff; /* Light background for the section */
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+.specialization-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #1d3557;
+}
+
+.specialization-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.specialization-item {
+    width: 30%;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.specialization-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.specialization-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #0078d4;
+}
+
+.specialization-item p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Button styling in hero section */
+.hero-button {
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    background-color: #0078d4;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.hero-button:hover {
+    background: linear-gradient(to right, #005c9c, #002060);
+    transform: scale(1.05);
+}
+.table-of-contents {
+    padding: 20px;
+    background: #f8f9fa;
+    text-align: center;
+    margin-top: 50px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.table-of-contents h2 {
+    font-size: 2rem;
+    color: #1d3557;
+}
+
+.table-of-contents ul {
+    list-style: none;
+    padding: 0;
+}
+
+.table-of-contents ul li {
+    margin: 10px 0;
+}
+
+.table-of-contents ul li a {
+    color: #0078d4;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.table-of-contents ul li a:hover {
+    color: #005c9c;
+}
 
 /* Media queries dla tabletów */
 @media (max-width: 1024px) {
