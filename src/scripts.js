@@ -26,15 +26,26 @@ function loadContent(filePath, targetElementId, callback) {
             targetElement.innerHTML = data;
             console.log(`Zawartość załadowana do ${targetElementId}`);
 
-            // Dodanie stylu i widoczności dla inquiry_orders, jeśli to jest inquiry_orders.html
+            // Dodanie odpowiednich CSS dla różnych sekcji
             if (filePath.includes('inquiry_orders.html')) {
                 addCSS('/src/css/inquiry_orders.css');
-                const formContainer = targetElement.querySelector('.form-container');
-                if (formContainer) {
-                    formContainer.classList.add('visible');
-                }
+            } else if (filePath.includes('gallery.html')) {
+                addCSS('/src/css/gallery.css');
+            } else if (filePath.includes('specification.html')) {
+                addCSS('/src/css/specification.css');
+            } else if (filePath.includes('disposable_equipment.html')) {
+                addCSS('/src/css/disposable_equipment.css');
+            } else if (filePath.includes('medical_devices.html')) {
+                addCSS('/src/css/medical_devices.css');
+            } else if (filePath.includes('hospitals_development.html')) {
+                addCSS('/src/css/hospitals_development.css');
             } else {
                 removeCSS('/src/css/inquiry_orders.css');
+                removeCSS('/src/css/gallery.css');
+                removeCSS('/src/css/specification.css');
+                removeCSS('/src/css/disposable_equipment.css');
+                removeCSS('/src/css/medical_devices.css');
+                removeCSS('/src/css/hospitals_development.css');
             }
 
             // Wywołanie funkcji callback po załadowaniu zawartości
@@ -70,6 +81,31 @@ $(document).on("click", 'a[href="#products"]', function(event) {
 $(document).on("click", 'a[href="#about-us"]', function(event) {
     event.preventDefault();
     loadContent('/src/partials/hero.html', 'hero');
+});
+
+$(document).on("click", "a[href='#gallery']", function(event) {
+    event.preventDefault();
+    loadContent('/src/partials/gallery.html', 'hero');
+});
+
+$(document).on("click", "a[href='#specification']", function(event) {
+    event.preventDefault();
+    loadContent('/src/partials/specification.html', 'hero');
+});
+
+$(document).on("click", "a[href='#disposable-equipment']", function(event) {
+    event.preventDefault();
+    loadContent('/src/partials/disposable_equipment.html', 'hero');
+});
+
+$(document).on("click", "a[href='#medical-devices']", function(event) {
+    event.preventDefault();
+    loadContent('/src/partials/medical_devices.html', 'hero');
+});
+
+$(document).on("click", "a[href='#hospital-development']", function(event) {
+    event.preventDefault();
+    loadContent('/src/partials/hospitals_development.html', 'hero');
 });
 
 $(document).on("click", "#inquiry-footer", function(event) {
