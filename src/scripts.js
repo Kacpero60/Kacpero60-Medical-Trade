@@ -59,16 +59,40 @@ $(document).ready(function() {
 
         if (windowWidth <= 768) {
             // Tylko na mniejszych urządzeniach
-            $('#specification-link').on('mouseenter', function() {
-                $('.dropdown-content').css('display', 'block').css('opacity', '1').css('transform', 'translateY(0)'); // Pokaż podlinki
+            $('#specification-link').on('mouseenter touchstart', function(event) {
+                event.preventDefault();
+                $('.dropdown-content').css({
+                    'display': 'block',
+                    'opacity': '1',
+                    'transform': 'translateY(0)',
+                    'position': 'absolute',
+                    'top': '100%',
+                    'left': '0',
+                    'z-index': '1000'
+                });
             });
 
-            $('.dropdown-content').on('mouseleave', function() {
-                $(this).css('display', 'none').css('opacity', '0').css('transform', 'translateY(-10px)'); // Ukryj podlinki
+            // Ukryj dropdown po zabraniu kursora lub dotknięciu gdziekolwiek poza menu
+            $('#header').on('mouseleave touchend', function() {
+                $('.dropdown-content').css({
+                    'display': 'none',
+                    'opacity': '0',
+                    'transform': 'translateY(-10px)'
+                });
+            });
+
+            // Ukryj dropdown po kliknięciu na dowolny podlink
+            $('.dropdown-content a').on('click', function() {
+                $('.dropdown-content').css({
+                    'display': 'none',
+                    'opacity': '0',
+                    'transform': 'translateY(-10px)'
+                });
             });
         } else {
-            $('#specification-link').off('mouseenter');
-            $('.dropdown-content').off('mouseleave');
+            $('#specification-link').off('mouseenter touchstart');
+            $('#header').off('mouseleave touchend');
+            $('.dropdown-content a').off('click');
             $('.dropdown-content').css('display', ''); // Ustaw domyślnie
         }
     }
