@@ -1,0 +1,119 @@
+/* Tło strony */
+body {
+    background: linear-gradient(135deg, #f0f4f8, #d9e4ec); /* Subtelne tło z gradientem */
+}
+
+.page-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Nagłówek strony */
+.title-header {
+    font-size: 2.2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+    letter-spacing: 1px;
+}
+
+/* Sekcja zawierająca obraz i tekst */
+.content-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px; /* Zaokrąglone rogi */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtelny cień dla sekcji */
+    transition: transform 0.3s ease; /* Efekt przy najechaniu */
+}
+
+/* Dodanie efektu przy najechaniu */
+.content-section:hover {
+    transform: translateY(-5px); /* Uniesienie sekcji przy najechaniu */
+}
+
+/* Kontener na obraz */
+.image-container {
+    flex: 1;
+    padding: 10px;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px; /* Zaokrąglone rogi obrazów */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Delikatny cień dla obrazów */
+}
+
+/* Kontener na tekst */
+.text-container {
+    flex: 2;
+    color: #333; /* Ciemniejszy tekst dla lepszego kontrastu */
+}
+
+.text-container p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    line-height: 1.8;
+}
+
+/* Pasek przewijania u dołu strony */
+.scroll-indicator {
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #4CAF50, transparent);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    opacity: 0.8;
+    transition: opacity 0.5s ease;
+}
+
+/* Stylizacja responsywna */
+@media screen and (max-width: 1024px) {
+    .title-header {
+        font-size: 2rem;
+    }
+
+    .content-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-container, .text-container {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .title-header {
+        font-size: 1.8rem;
+    }
+
+    .content-section {
+        gap: 10px;
+    }
+
+    .text-container p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .title-header {
+        font-size: 1.6rem;
+    }
+
+    .content-section {
+        gap: 5px;
+        padding: 15px;
+    }
+
+    .text-container p {
+        font-size: 0.95rem;
+    }
+}

@@ -176,3 +176,15 @@ $(document).ready(function() {
         }
     }
 });
+// Dodaj płynne przejście po kliknięciu w podlink
+document.querySelectorAll('.dropdown-content a').forEach(link => {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        const href = this.getAttribute("href");
+        
+        document.body.style.opacity = 0;
+        setTimeout(() => {
+            window.location.href = href;
+        }, 500); // Czas trwania animacji 500 ms
+    });
+});
