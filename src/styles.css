@@ -1,4 +1,12 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300; /* Lekka waga */
+}
 
+.logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300; /* Lżejsza waga dla subtelniejszego wyglądu */
+}
 body, html {
     width: 100%;
     margin: 0;
