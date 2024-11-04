@@ -128,9 +128,11 @@
     width: 100%;
 }
 
+/* Stylizacja głównego linku z efektem powiększenia przy najechaniu */
 .navigation-bar > ul > li > a:hover {
     color: #007bff;
 }
+
 
 /* Stylizacja ikony telefonu */
 .phone-icon {

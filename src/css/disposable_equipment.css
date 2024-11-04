@@ -1,6 +1,8 @@
+/* Stylizacja dla strony Disposable Equipment */
+
 /* Tło strony */
 body {
-    background: linear-gradient(135deg, #f0f4f8, #d9e4ec); /* Subtelne tło z gradientem */
+    background: linear-gradient(135deg, #f0f4f8, #d9e4ec);
 }
 
 .page-container {
@@ -26,33 +28,35 @@ body {
     margin-bottom: 30px;
     padding: 20px;
     background: #ffffff;
-    border-radius: 12px; /* Zaokrąglone rogi */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtelny cień dla sekcji */
-    transition: transform 0.3s ease; /* Efekt przy najechaniu */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-/* Dodanie efektu przy najechaniu */
 .content-section:hover {
-    transform: translateY(-5px); /* Uniesienie sekcji przy najechaniu */
+    transform: translateY(-5px);
 }
 
 /* Kontener na obraz */
 .image-container {
     flex: 1;
     padding: 10px;
+    max-width: 50%; /* Zwiększenie szerokości kontenera obrazu */
 }
 
 .image-container img {
     width: 100%;
-    height: auto;
-    border-radius: 12px; /* Zaokrąglone rogi obrazów */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Delikatny cień dla obrazów */
+    height: 300px; /* Zwiększenie wysokości obrazu */
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Kontener na tekst */
 .text-container {
     flex: 2;
-    color: #333; /* Ciemniejszy tekst dla lepszego kontrastu */
+    padding-left: 20px; /* Przesunięcie tekstu bardziej na prawo */
+    color: #333;
 }
 
 .text-container p {
