@@ -11,7 +11,7 @@
 }
 
 /* Kontener na formularz i sekcję kontaktową */
-.content-wrapper {
+.content-wrapper-inquiry {
     display: flex;
     flex-direction: row-reverse; /* Formularz po prawej stronie */
     align-items: flex-start;
