@@ -1,45 +1,32 @@
-/* Przykładowy kontener dla polityki prywatności */
-.privacy-policy-container {
+.pop-up-container {
+    display: none; /* Ukryty na początku */
+    width: 100%;
+    height: 100%;
+    top: 0;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    max-width: 600px;
-    width: 90%;
-    overflow-y: auto; /* Dodanie przewijania */
-    max-height: 80vh; /* Maksymalna wysokość */
-    display: none; /* Domyślnie ukryte */
+    background-color: rgba(0, 0, 0, 0.7); /* Przezroczyste tło */
+    color: #ffffff;
+    z-index: 999; /* Na wierzchu */
 }
 
-/* Przycisk do zamykania okna */
-.close-button {
+.pop-up {
+    width: 500px; /* Szerokość pop-upu */
+    padding: 20px; /* Padding */
+    border-radius: 10px; /* Zaokrąglone rogi */
+    background-color: #111; /* Kolor tła */
+    margin: auto; /* Centrowanie */
+    position: relative; 
+    top: 50%;
+    transform: translateY(-50%); /* Centrowanie */
+}
+
+.closePopUp {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: transparent;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* Stylizacja tytułu */
-.policy-title {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Efekt rozmycia dla kontenera inquiry */
-.inquiry-container {
-    filter: blur(4px); /* Rozmycie */
-}
-
-/* Gdy polityka prywatności jest wyświetlana */
-.show-privacy-policy {
-    display: block; /* Pokazuje politykę prywatności */
-    filter: none; /* Usuwa efekt rozmycia */
+    background: none; /* Bez tła */
+    border: none; /* Bez obramowania */
+    color: white; /* Kolor tekstu */
+    font-size: 20px; /* Rozmiar czcionki */
+    cursor: pointer; /* Kursor jako wskaźnik */
 }
