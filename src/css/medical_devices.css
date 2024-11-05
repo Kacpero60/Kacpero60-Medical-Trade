@@ -1,36 +1,42 @@
-/* Stylizacja dla strony Disposable Equipment */
-
-/* Tło strony */
-body {
-    background: linear-gradient(135deg, #f0f4f8, #d9e4ec);
-}
-
+/* Kontener na stronę */
 .page-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
+    width: 100%;
+    background: linear-gradient(135deg, #e0f7fa); /* Delikatny gradient jako tło sekcji */
+    padding: auto; /* Padding wewnętrzny dla estetyki */
+    border-radius: 10px; /* Zaokrąglenie rogów */
+}
+/* Tło nagłówka */
+.title-header {
+    position: relative; /* Umożliwienie umieszczenia tła */
+    font-size: 3rem; /* Powiększenie rozmiaru nagłówka */
+    font-weight: 700; /* Ustawienie większej grubości czcionki */
+    text-align: center;
+    color: #1b1b1b; /* Kolor tekstu */
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #e0f7fa); /* Gradient jako tło nagłówka */
+    border-radius: 10px; /* Zaokrąglenie rogów */
+    margin: 0; /* Usunięcie marginesu */
+    padding: 20px 0; /* Tylko padding w pionie */
 }
 
-/* Nagłówek strony */
-.title-header {
-    font-size: 2.2rem;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 40px;
-    color: #333;
-    letter-spacing: 1px;
+
+/* Kontener dla sekcji */
+.content-wrapper {
+    display: grid; /* Użycie grid do układania elementów */
+    grid-template-columns: repeat(2, 1fr); /* Dwie kolumny */
+    gap: 20px; /* Odstęp między sekcjami */
 }
 
 /* Sekcja zawierająca obraz i tekst */
 .content-section {
     display: flex;
-    gap: 20px;
-    margin-bottom: 30px;
+    flex-direction: row; /* Ustawienie wierszowe na większych ekranach */
     padding: 20px;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.9); /* Użycie białego tła z przezroczystością */
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    margin: 0 auto; /* Wyśrodkowanie sekcji */
 }
 
 .content-section:hover {
@@ -40,84 +46,53 @@ body {
 /* Kontener na obraz */
 .image-container {
     flex: 1;
-    padding: 10px;
-    max-width: 50%; /* Zwiększenie szerokości kontenera obrazu */
 }
 
 .image-container img {
     width: 100%;
-    height: 300px; /* Zwiększenie wysokości obrazu */
+    height: 300px; /* Wysokość obrazu */
     object-fit: cover;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Cień dla obrazka */
 }
 
 /* Kontener na tekst */
 .text-container {
-    flex: 2;
-    padding-left: 20px; /* Przesunięcie tekstu bardziej na prawo */
+    flex: 1;
     color: #333;
-}
-
-.text-container p {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
+    font-size: 1.1rem; /* Ustawienie wielkości czcionki */
     line-height: 1.8;
-}
-
-/* Pasek przewijania u dołu strony */
-.scroll-indicator {
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(to right, #4CAF50, transparent);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    opacity: 0.8;
-    transition: opacity 0.5s ease;
+    margin: 0; /* Usunięcie marginesu dla nagłówka */
 }
 
 /* Stylizacja responsywna */
-@media screen and (max-width: 1024px) {
-    .title-header {
-        font-size: 2rem;
+@media screen and (max-width: 768px) {
+    .content-wrapper {
+        grid-template-columns: 1fr; /* Jedna kolumna na mniejszych ekranach */
     }
 
     .content-section {
-        flex-direction: column;
+        flex-direction: column; /* Kolumnowy układ na mniejszych ekranach */
         align-items: center;
+        width: 100%; /* Pełna szerokość */
     }
 
     .image-container, .text-container {
-        max-width: 100%;
+        max-width: 100%; /* Szerokość na mniejszych ekranach */
+    }
+
+    .image-container img {
+        height: auto; /* Automatyczna wysokość na mniejszych ekranach */
+    }
+
+    .text-container {
+        margin-top: 10px; /* Odstęp między obrazkiem a tekstem */
     }
 }
 
-@media screen and (max-width: 768px) {
-    .title-header {
-        font-size: 1.8rem;
-    }
-
+/* Sekcja z układem dwóch kolumn */
+@media screen and (min-width: 769px) {
     .content-section {
-        gap: 10px;
-    }
-
-    .text-container p {
-        font-size: 1rem;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .title-header {
-        font-size: 1.6rem;
-    }
-
-    .content-section {
-        gap: 5px;
-        padding: 15px;
-    }
-
-    .text-container p {
-        font-size: 0.95rem;
+        flex-basis: 48%; /* Ustawienie szerokości dla dwóch kolumn */
     }
 }
