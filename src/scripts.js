@@ -191,3 +191,7 @@ $(document).ready(function() {
         }
     }
 });
+$(document).on("click", "a[href='#privacy-policy']", function(event) {
+    event.preventDefault();
+    showPrivacyPolicy(); // Otwórz politykę prywatności
+});

@@ -1,0 +1,45 @@
+/* Przykładowy kontener dla polityki prywatności */
+.privacy-policy-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    max-width: 600px;
+    width: 90%;
+    overflow-y: auto; /* Dodanie przewijania */
+    max-height: 80vh; /* Maksymalna wysokość */
+    display: none; /* Domyślnie ukryte */
+}
+
+/* Przycisk do zamykania okna */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Stylizacja tytułu */
+.policy-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Efekt rozmycia dla kontenera inquiry */
+.inquiry-container {
+    filter: blur(4px); /* Rozmycie */
+}
+
+/* Gdy polityka prywatności jest wyświetlana */
+.show-privacy-policy {
+    display: block; /* Pokazuje politykę prywatności */
+    filter: none; /* Usuwa efekt rozmycia */
+}
