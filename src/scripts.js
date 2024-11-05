@@ -151,8 +151,8 @@ $(document).ready(function() {
     });
 
     $(document).on("click", "a[href='#specification']", function(event) {
-        event.preventDefault();
-        loadContent('/src/partials/specification.html', 'hero');
+        event.preventDefault(); // Zapobiega domyślnemu działaniu linku
+        // Tutaj nic się nie dzieje, nie ładujemy żadnej treści
     });
 
     $(document).on("click", "a[href='#disposable-equipment']", function(event) {
