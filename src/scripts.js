@@ -151,8 +151,8 @@ $(document).ready(function() {
     });
 
     $(document).on("click", "a[href='#specification']", function(event) {
-        event.preventDefault(); // Zapobiega domyślnemu działaniu linku
-        // Tutaj nic się nie dzieje, nie ładujemy żadnej treści
+        event.preventDefault();
+        loadContent('/src/partials/specification.html', 'hero'); // Dodano ładowanie treści dla podlinku specification
     });
 
     $(document).on("click", "a[href='#disposable-equipment']", function(event) {
@@ -191,6 +191,8 @@ $(document).ready(function() {
         }
     }
 });
+
+// Funkcja do otwierania polityki prywatności
 $(document).on("click", "a[href='#privacy-policy']", function(event) {
     event.preventDefault();
     showPrivacyPolicy(); // Otwórz politykę prywatności
