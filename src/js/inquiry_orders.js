@@ -28,15 +28,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 $(document).ready(function() {
+    // Dodanie bąbelków do tła (tylko jeśli potrzebne)
+    const inquiryContainer = document.getElementById("inquiry-container");
+    if (inquiryContainer) {
+        for (let i = 0; i < 60; i++) {
+            const bubble = document.createElement("div");
+            bubble.classList.add("bubble");
+            const size = Math.random() * 60 + 20;
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.style.left = `${Math.random() * 100}%`;
+            bubble.style.top = `${Math.random() * 100}%`;
+            bubble.style.animationDuration = `${Math.random() * 15 + 10}s`;
+            inquiryContainer.appendChild(bubble);
+        }
+    }
+
     // Obsługa kliknięcia na link "Privacy Policy" i otwieranie pop-upu
-    $(document).on("click", '.form-group a[href="/src/partials/privacy_police.html"]', function(event) {
+    $(document).on("click", '.form-group a[href="privacy_police.html"]', function(event) {
         event.preventDefault();
         openPrivacyPolicyPopup();
     });
 
     // Funkcja otwierająca pop-up z polityką prywatności
     function openPrivacyPolicyPopup() {
-        fetch("/src/privacy_police.html")  // Upewnij się, że ścieżka jest poprawna
+        fetch("/src/privacy_police.html")
             .then(response => {
                 if (!response.ok) throw new Error("Error loading Privacy Policy");
                 return response.text();
