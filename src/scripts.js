@@ -1,14 +1,14 @@
 $(document).ready(function() {
     // Ładowanie zawartości header, hero oraz footer
-    $('#header').load('/src/partials/header.html', function() {
+    $('#header').load('src/partials/header.html', function() {
         console.log("Załadowano header.html");
     });
 
-    loadContent('/src/partials/hero.html', 'hero', function() {
+    loadContent('src/partials/hero.html', 'hero', function() {
         console.log("Załadowano hero.html");
     });
 
-    $('#footer').load('/src/partials/footer.html', function() {
+    $('#footer').load('src/partials/footer.html', function() {
         console.log("Załadowano footer.html");
     });
 
@@ -36,24 +36,24 @@ $(document).ready(function() {
 
                     // Dodanie odpowiednich CSS dla różnych sekcji
                     if (filePath.includes('inquiry_orders.html')) {
-                        addCSS('/src/css/inquiry_orders.css');
+                        addCSS('src/css/inquiry_orders.css');
                     } else if (filePath.includes('gallery.html')) {
-                        addCSS('/src/css/gallery.css');
+                        addCSS('src/css/gallery.css');
                     } else if (filePath.includes('specification.html')) {
-                        addCSS('/src/css/specification.css');
+                        addCSS('src/css/specification.css');
                     } else if (filePath.includes('disposable_equipment.html')) {
-                        addCSS('/src/css/disposable_equipment.css');
+                        addCSS('src/css/disposable_equipment.css');
                     } else if (filePath.includes('medical_devices.html')) {
-                        addCSS('/src/css/medical_devices.css');
+                        addCSS('src/css/medical_devices.css');
                     } else if (filePath.includes('hospitals_development.html')) {
-                        addCSS('/src/css/hospitals_development.css');
+                        addCSS('src/css/hospitals_development.css');
                     } else {
-                        removeCSS('/src/css/inquiry_orders.css');
-                        removeCSS('/src/css/gallery.css');
-                        removeCSS('/src/css/specification.css');
-                        removeCSS('/src/css/disposable_equipment.css');
-                        removeCSS('/src/css/medical_devices.css');
-                        removeCSS('/src/css/hospitals_development.css');
+                        removeCSS('src/css/inquiry_orders.css');
+                        removeCSS('src/css/gallery.css');
+                        removeCSS('src/css/specification.css');
+                        removeCSS('src/css/disposable_equipment.css');
+                        removeCSS('src/css/medical_devices.css');
+                        removeCSS('src/css/hospitals_development.css');
                     }
 
                     // Dodaj klasę fade-in po załadowaniu nowej zawartości
@@ -132,47 +132,47 @@ $(document).ready(function() {
 
     $(document).on("click", "#contact-us-button", function(event) {
         event.preventDefault();
-        loadContent('/src/partials/inquiry_orders.html', 'hero');
+        loadContent('src/partials/inquiry_orders.html', 'hero');
     });
 
     $(document).on("click", 'a[href="#products"]', function(event) {
         event.preventDefault();
-        loadContent('/src/partials/inquiry_orders.html', 'hero');
+        loadContent('src/partials/inquiry_orders.html', 'hero');
     });
 
     $(document).on("click", 'a[href="#about-us"]', function(event) {
         event.preventDefault();
-        loadContent('/src/partials/hero.html', 'hero');
+        loadContent('src/partials/hero.html', 'hero');
     });
 
     $(document).on("click", "a[href='#gallery']", function(event) {
         event.preventDefault();
-        loadContent('/src/partials/gallery.html', 'hero');
+        loadContent('src/partials/gallery.html', 'hero');
     });
 
     $(document).on("click", "a[href='#specification']", function(event) {
         event.preventDefault();
-        loadContent('/src/partials/specification.html', 'hero'); // Dodano ładowanie treści dla podlinku specification
+        loadContent('src/partials/specification.html', 'hero'); // Dodano ładowanie treści dla podlinku specification
     });
 
     $(document).on("click", "a[href='#disposable-equipment']", function(event) {
         event.preventDefault();
-        loadContent('/src/partials/disposable_equipment.html', 'hero');
+        loadContent('src/partials/disposable_equipment.html', 'hero');
     });
 
     $(document).on("click", "a[href='#medical-devices']", function(event) {
         event.preventDefault();
-        loadContent('/src/partials/medical_devices.html', 'hero');
+        loadContent('src/partials/medical_devices.html', 'hero');
     });
 
     $(document).on("click", "a[href='#hospital-development']", function(event) {
         event.preventDefault();
-        loadContent('/src/partials/hospitals_development.html', 'hero');
+        loadContent('src/partials/hospitals_development.html', 'hero');
     });
 
     $(document).on("click", "#inquiry-footer", function(event) {
         event.preventDefault();
-        loadContent('/src/partials/inquiry_orders.html', 'hero');
+        loadContent('src/partials/inquiry_orders.html', 'hero');
     });
 
     function addCSS(href) {
