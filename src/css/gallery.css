@@ -1,0 +1,82 @@
+/* Resetowanie marginesów i ogólnych stylów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Galeria */
+.gallery {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Opis galerii */
+.gallery-intro h2 {
+    font-size: 2em;
+    color: #003366;
+    margin-bottom: 10px;
+}
+
+.gallery-intro p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Galeria obrazów */
+.gallery-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Styl dla obrazów */
+.gallery-images img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+/* Powiększenie obrazu po najechaniu */
+.gallery-images img:hover {
+    transform: scale(1.05);
+}
+
+/* Responsywność na urządzeniach mobilnych */
+@media (max-width: 768px) {
+    .gallery-intro h2 {
+        font-size: 1.5em;
+    }
+
+    .gallery-intro p {
+        font-size: 1em;
+    }
+
+    .gallery-images img {
+        height: 150px;
+    }
+}
+
+/* Responsywność na tabletach */
+@media (max-width: 480px) {
+    .gallery-intro h2 {
+        font-size: 1.2em;
+    }
+
+    .gallery-intro p {
+        font-size: 0.9em;
+    }
+
+    .gallery-images img {
+        height: 120px;
+    }
+}
