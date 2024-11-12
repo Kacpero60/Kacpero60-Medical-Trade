@@ -47,6 +47,8 @@ $(document).ready(function() {
                         addCSS('src/css/medical_devices.css');
                     } else if (filePath.includes('hospitals_development.html')) {
                         addCSS('src/css/hospitals_development.css');
+                    } else if (filePath.includes('privacy_police.html')) {
+                        addCSS('src/css/privacy_police.css');
                     } else {
                         removeCSS('src/css/inquiry_orders.css');
                         removeCSS('src/css/gallery.css');
@@ -54,6 +56,7 @@ $(document).ready(function() {
                         removeCSS('src/css/disposable_equipment.css');
                         removeCSS('src/css/medical_devices.css');
                         removeCSS('src/css/hospitals_development.css');
+                        removeCSS('src/css/privacy_police.css');
                     }
 
                     // Dodaj klasę fade-in po załadowaniu nowej zawartości
@@ -173,6 +176,11 @@ $(document).ready(function() {
     $(document).on("click", "#inquiry-footer", function(event) {
         event.preventDefault();
         loadContent('src/partials/inquiry_orders.html', 'hero');
+    });
+
+    $(document).on("click", "#privacy-policy", function (event) {
+      event.preventDefault();
+      loadContent("src/partials/privacy_police.html", "hero");
     });
 
     function addCSS(href) {
