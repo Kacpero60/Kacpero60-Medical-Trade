@@ -1,32 +1,216 @@
-.pop-up-container {
-    display: none; /* Ukryty na początku */
-    width: 100%;
-    height: 100%;
-    top: 0;
+/* Stylizacja głównego kontenera */
+#popUpContainer {
+    max-width: 100%; /* Zmniejszenie szerokości kontenera */
+    margin: 20px auto; /* Wycentrowanie kontenera bez marginesów */
+    padding: 2rem; /* Odsunięcie zawartości od krawędzi */
+    border: 1px solid #dcdcdc; /* Subtelna ramka */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Lekkie cienie */
+    border-radius: 8px;
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+/* Zmniejszenie stylu nagłówków */
+.policy-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #1d3557;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #007acc;
+}
+
+/* Stylizacja sekcji w treści */
+.policy-content h2, .policy-content h3 {
+    font-size: 1.4rem;
+    text-align: center;
+    color: #1d3557;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #007acc;
+    padding-bottom: 0.3rem;
+}
+
+/* Treść akapitu */
+.policy-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    margin: 1rem 0;
+}
+
+/* Usunięcie niepotrzebnych pseudo-elementów */
+#popUpContainer::before, #popUpContainer::after {
+    content: none; /* Usunięcie potencjalnych linii lub dekoracji */
+}
+
+/* Stylizacja głównego kontenera */
+.pop-up-container-inquiry {
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.7); /* Przezroczyste tło */
-    color: #ffffff;
-    z-index: 999; /* Na wierzchu */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Półprzezroczysty czarny dla tła */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Aby pop-up był na wierzchu */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.pop-up {
-    width: 500px; /* Szerokość pop-upu */
-    padding: 20px; /* Padding */
-    border-radius: 10px; /* Zaokrąglone rogi */
-    background-color: #111; /* Kolor tła */
-    margin: auto; /* Centrowanie */
-    position: relative; 
-    top: 50%;
-    transform: translateY(-50%); /* Centrowanie */
+/* Stylizacja okna pop-upu */
+.pop-up-inquiry {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Elegancki cień */
+    overflow-y: auto;
+    max-height: 80vh; /* Aby pop-up nie przekraczał widocznego obszaru */
+    position: relative;
 }
 
-.closePopUp {
+/* Przycisk zamykania pop-upu */
+.closePopUp-inquiry {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: none; /* Bez tła */
-    border: none; /* Bez obramowania */
-    color: white; /* Kolor tekstu */
-    font-size: 20px; /* Rozmiar czcionki */
-    cursor: pointer; /* Kursor jako wskaźnik */
+    background-color: #ff5c5c;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.closePopUp-inquiry:hover {
+    background-color: #ff3b3b;
+}
+
+/* Stylizacja zawartości polityki prywatności */
+.privacy-policy-content {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Tytuł polityki prywatności */
+.privacy-policy-content h1, 
+.privacy-policy-content h2, 
+.privacy-policy-content h3 {
+    color: #1d3557;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid #007acc;
+    padding-bottom: 0.3rem;
+}
+
+/* Paragrafy */
+.privacy-policy-content p {
+    margin: 1rem 0;
+}
+
+/* Linki w polityce prywatności */
+.privacy-policy-content a {
+    color: #007acc;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.privacy-policy-content a:hover {
+    color: #005fa3;
+    text-decoration: none;
+}
+
+/* Stylizacja list */
+.privacy-policy-content ul, 
+.privacy-policy-content ol {
+    margin-left: 1.5rem;
+    padding-left: 1rem;
+}
+
+.privacy-policy-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Przewijanie zawartości w pop-upie */
+.pop-up-inquiry::-webkit-scrollbar {
+    width: 8px;
+}
+
+.pop-up-inquiry::-webkit-scrollbar-thumb {
+    background-color: #007acc;
+    border-radius: 4px;
+}
+
+.pop-up-inquiry::-webkit-scrollbar-thumb:hover {
+    background-color: #005fa3;
+}
+
+/* Responsywność dla tabletów i mniejszych ekranów */
+@media (max-width: 768px) {
+    .pop-up-inquiry {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+
+    .privacy-policy-content {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .privacy-policy-content h1, 
+    .privacy-policy-content h2, 
+    .privacy-policy-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .closePopUp-inquiry {
+        width: 25px;
+        height: 25px;
+        font-size: 1rem;
+        top: 8px;
+        right: 8px;
+    }
+}
+
+/* Responsywność dla telefonów komórkowych */
+@media (max-width: 480px) {
+    .pop-up-inquiry {
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    .privacy-policy-content {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .privacy-policy-content h1, 
+    .privacy-policy-content h2, 
+    .privacy-policy-content h3 {
+        font-size: 1.2rem;
+        padding-bottom: 0.2rem;
+    }
+
+    .closePopUp-inquiry {
+        width: 22px;
+        height: 22px;
+        font-size: 0.9rem;
+        top: 6px;
+        right: 6px;
+    }
 }

@@ -199,4 +199,12 @@ $(document).ready(function() {
             link.remove();
         }
     }
+    // Obsługa kliknięcia w link "Privacy Policy" tak, aby załadować sekcję jak inne strony
+$(document).on("click", "a[href='privacy_police.html']", function(event) {
+    event.preventDefault();
+    loadContent("src/partials/privacy_police.html", "hero", function() {
+        console.log("Załadowano privacy_police.html");
+    });
+});
+
 });
