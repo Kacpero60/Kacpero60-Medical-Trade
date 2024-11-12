@@ -197,6 +197,51 @@
     transform: translateY(0);
     display: block;
 }
+/* Stylizacja dropdown dla SPECIFICATION */
+.navigation-bar .dropdown-content {
+    display: none; /* Ukryte domyślnie */
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 200px;
+    margin-top: 10px;
+    z-index: 1000;
+}
+
+.navigation-bar .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.navigation-bar .dropdown-content a {
+    padding: 8px 12px;
+    display: block;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.navigation-bar .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Stylizacja, aby rozsuwało się dynamicznie na mniejszych ekranach */
+@media (max-width: 768px) {
+    .navigation-bar .dropdown-content {
+        position: relative;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .navigation-bar .dropdown {
+        display: block;
+    }
+
+    .navigation-bar .dropdown-content a {
+        padding: 12px;
+        text-align: left;
+    }
+}
 
 /* Stylizacja responsywna dla mniejszych ekranów */
 @media screen and (max-width: 768px) {
