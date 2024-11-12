@@ -181,123 +181,23 @@ button:hover {
     }
 }
 
-/* Responsywność */
+/* Responsywność dla ekranów mobilnych (iPhone, Samsung itp.) */
 @media (max-width: 768px) {
-    .content-wrapper {
-        flex-direction: column;
-        width: 90%;
-    }
-    
-    .contact-info {
-        order: -1; /* Kontakt wyświetlany na górze */
-        margin-bottom: 20px;
-    }
-
-    .form-container,
-    .contact-info {
-        max-width: 100%;
-    }
-
-    .contact-info h2 {
-        font-size: 1.8rem;
-    }
-
-    .contact-item h3 {
-        font-size: 1.3rem;
-    }
-
-    .contact-item img {
-        width: 36px;
-        height: 36px;
-    }
-}
-/* Poprawiona responsywność dla iPhone'ów i Samsungów od wersji 11 w górę */
-@media (max-width: 425px) {
-    /* Ustawienie kontenera w pionie na mniejszych ekranach */
-    .content-wrapper {
+    /* Zmiana układu kontenera na urządzeniach mobilnych */
+    .content-wrapper-inquiry {
         flex-direction: column;
         align-items: center;
         width: 100%;
     }
 
-    /* Sekcja kontaktowa wyświetlana na górze */
+    /* Wyświetlenie sekcji kontaktowej na górze */
     .contact-info {
         order: -1;
         max-width: 90%;
         margin-bottom: 20px;
         padding: 1.5rem;
-    }
-
-    /* Formularz umieszczony poniżej sekcji kontaktowej */
-    .form-container {
-        max-width: 90%;
-        margin-bottom: 20px;
-        padding: 1.5rem;
-    }
-
-    /* Stylizacja dla kontaktu, aby tekst i ikony były bardziej kompaktowe */
-    .contact-info h2 {
-        font-size: 1.6rem;
-    }
-
-    .contact-item h3 {
-        font-size: 1.2rem;
-    }
-
-    .contact-item img {
-        width: 30px;
-        height: 30px;
-    }
-
-    .contact-item p,
-    .contact-item a {
-        font-size: 0.9rem;
-    }
-
-    /* Formularz - poprawa odstępów dla mniejszych ekranów */
-    .form-group {
-        padding: 0.4rem;
-    }
-
-    .form-group img {
-        width: 20px;
-        height: 20px;
-        margin-right: 0.5rem;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="number"],
-    select {
-        font-size: 0.9rem;
-    }
-
-    button {
-        font-size: 0.9rem;
-        padding: 0.8rem;
-    }
-}
-/* Poprawiona responsywność dla małych ekranów (iPhone, Samsung) */
-@media (max-width: 768px) {
-    #inquiry-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-    }
-
-    .content-wrapper {
-        flex-direction: column;
-        align-items: center;
         width: 100%;
-    }
-
-    /* Sekcja kontaktowa wyświetlana na górze na małych ekranach */
-    .contact-info {
-        order: -1;
-        max-width: 90%;
-        margin-bottom: 20px;
-        padding: 1.5rem;
+        box-sizing: border-box;
         text-align: center;
     }
 
@@ -305,9 +205,51 @@ button:hover {
     .form-container {
         max-width: 90%;
         padding: 1.5rem;
+        width: 100%;
+        margin-bottom: 20px;
+        box-sizing: border-box;
     }
 
-    /* Stylizacja dla mniejszych ekranów */
+    /* Ustawienia tylko dla formularza na małych ekranach */
+    .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        border: 1px solid #b3d1f2;
+        padding: 0.5rem;
+        border-radius: 4px;
+        background: #eaf4fb;
+        width: 100%; /* Pełna szerokość tylko na mobile */
+        box-sizing: border-box;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="number"],
+    .form-group select {
+        border: none;
+        outline: none;
+        width: 100%; /* Pełna szerokość tylko na mobile */
+        background: transparent;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+        color: #333;
+        box-sizing: border-box;
+    }
+
+    .form-group img {
+        width: 20px;
+        height: 20px;
+        margin-right: 0.5rem;
+    }
+
+    /* Ustawienie kontaktów w kolumnie */
+    .contact-section {
+        grid-template-columns: 1fr; /* Jedna kolumna */
+        gap: 1rem;
+    }
+
+    /* Dostosowanie wielkości tekstów i ikon dla mniejszych ekranów */
     .contact-info h2 {
         font-size: 1.8rem;
     }
@@ -323,47 +265,12 @@ button:hover {
 
     .contact-item p,
     .contact-item a {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
-    /* Formularz - poprawa odstępów dla mniejszych ekranów */
-    .form-group {
-        padding: 0.4rem;
-    }
-
-    .form-group img {
-        width: 20px;
-        height: 20px;
-        margin-right: 0.5rem;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="number"],
-    select {
-        font-size: 1rem;
-    }
-
+    /* Stylizacja przycisku dla mniejszych ekranów */
     button {
-        font-size: 1rem;
+        font-size: 0.9rem;
         padding: 0.8rem;
-    }
-}
-/* Poprawa dla sekcji Contact with Us na małych ekranach */
-@media (max-width: 768px) {
-    .contact-info {
-        width: 100%; /* Ustawienie pełnej szerokości na małych ekranach */
-        padding: 1rem; /* Mniejsze paddingi, aby dostosować do mniejszych ekranów */
-        box-sizing: border-box; /* Upewnia się, że padding nie wpływa na szerokość */
-    }
-    
-    .contact-section {
-        grid-template-columns: 1fr; /* Jedna kolumna na małych ekranach */
-        gap: 1rem; /* Zmniejszenie odstępu między elementami */
-    }
-    
-    .content-wrapper {
-        padding: 0 10px; /* Dodanie paddingu, aby dać trochę marginesu po bokach */
-        box-sizing: border-box;
     }
 }
