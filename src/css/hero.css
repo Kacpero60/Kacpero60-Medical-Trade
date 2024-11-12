@@ -232,94 +232,91 @@
     color: #002060;
 }
 
-/* Ustawienie responsywne */
+/* Responsywność dla sekcji hero */
+
+/* Dla ekranów o szerokości poniżej 1024px (tablety i mniejsze laptopy) */
 @media (max-width: 1024px) {
-    .info-section {
-        flex-direction: column;
+    .hero-section {
+        height: 50vh; /* Zmniejszenie wysokości hero */
+    }
+    
+    .hero-title {
+        font-size: 2.5rem; /* Zmniejszenie rozmiaru tytułu */
+    }
+
+    .hero-text {
+        font-size: 1.3rem; /* Zmniejszenie rozmiaru tekstu */
+        margin-top: 15px;
+    }
+
+    .hero-button {
+        font-size: 0.9rem;
+        padding: 8px 16px; /* Mniejsze odstępy wokół przycisku */
+        margin-top: 8px;
+    }
+}
+
+/* Dla ekranów o szerokości poniżej 768px (smartfony) */
+@media (max-width: 768px) {
+    .hero-section {
+        height: auto; /* Automatyczna wysokość dla sekcji hero */
+        padding: 20px; /* Dodanie wewnętrznego odstępu */
+        text-align: center; /* Wyśrodkowanie tekstu */
+    }
+    
+    .hero-content {
+        position: static; /* Usunięcie pozycji absolutnej */
+        transform: none; /* Wyłączenie przesunięcia */
+        top: auto;
+        left: auto;
+    }
+
+    .hero-title {
+        font-size: 2rem; /* Jeszcze mniejszy rozmiar tytułu */
+    }
+
+    .hero-text {
+        font-size: 1.1rem; /* Jeszcze mniejszy rozmiar tekstu */
+        margin-top: 10px;
+    }
+
+    .hero-button {
+        font-size: 0.8rem;
+        padding: 6px 12px; /* Mniejsze odstępy wokół przycisku */
+        margin-top: 6px;
+    }
+}
+/* Ustawienia kolumny dla sekcji specialization na mniejszych ekranach */
+@media (max-width: 768px) {
+    .specialization-grid {
+        display: flex;
+        flex-direction: column; /* Ustawienie kolumny */
         align-items: center;
     }
 
-    .info-block {
-        width: 80%;
-        margin-bottom: 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .info-block {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .info-title {
-        font-size: 1.8rem;
-    }
-
-    .info-text {
-        font-size: 1.1rem;
-    }
-
-    .info-button {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-}
-
-/* Kluczowe animacje */
-@keyframes floatBubble {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-800px); }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Sekcje z siatką */
-.use-cases-grid, .specialization-grid, .info-section {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap; /* Zapobiega łamaniu się elementów do następnej linii */
-    gap: 30px;
-}
-
-/* Elementy siatki w sekcji "Our Specializations" */
-.specialization-item {
-    width: 30%; /* Ustaw szerokość na 30%, aby zmieścić trzy elementy w jednym rzędzie */
-    padding: 20px;
-    background: white;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-}
-
-.specialization-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.specialization-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-/* Dodane media query, aby zachować responsywność na mniejszych ekranach */
-@media (max-width: 1024px) {
-    .specialization-grid {
-        flex-wrap: wrap; /* Pozwala elementom łamać się do nowej linii na mniejszych ekranach */
-    }
     .specialization-item {
-        width: 45%; /* Dopasowanie szerokości elementów na tabletach */
+        width: 100%; /* Dopasowanie szerokości do pełnej szerokości ekranu */
+        margin-bottom: 20px; /* Dodatkowy odstęp między elementami */
+    }
+
+    .specialization-title {
+        font-size: 2rem; /* Zmniejszenie rozmiaru nagłówka dla lepszej czytelności */
+        text-align: center; /* Wyśrodkowanie tytułu */
     }
 }
 
-@media (max-width: 768px) {
-    .specialization-item {
-        width: 100%; /* Dopasowanie szerokości elementów na telefonach */
+/* Dla bardzo małych ekranów o szerokości poniżej 480px (małe smartfony) */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8rem; /* Minimalna wielkość tytułu */
+    }
+
+    .hero-text {
+        font-size: 1rem; /* Minimalna wielkość tekstu */
+    }
+
+    .hero-button {
+        font-size: 0.7rem;
+        padding: 5px 10px; /* Jeszcze mniejsze odstępy wokół przycisku */
     }
 }
