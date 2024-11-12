@@ -231,6 +231,23 @@
 .dropdown-content a:hover {
     color: #002060;
 }
+.specialization-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Układ w jednym rzędzie na większych ekranach */
+@media (min-width: 1024px) {
+    .specialization-grid {
+        flex-direction: row;
+    }
+    .specialization-item {
+        width: 30%; /* Trzy elementy w jednym rzędzie */
+        max-width: none;
+    }
+}
 
 /* Responsywność dla sekcji hero */
 
