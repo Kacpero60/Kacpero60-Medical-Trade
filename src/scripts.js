@@ -178,9 +178,10 @@ $(document).ready(function() {
         loadContent('src/partials/inquiry_orders.html', 'hero');
     });
 
-    $(document).on("click", "#privacy-policy", function (event) {
-      event.preventDefault();
-      loadContent("src/partials/privacy_police.html", "hero");
+    // Obsługa kliknięcia w przycisk "Privacy Policy"
+    $(document).on("click", "a[href='#privacy-policy']", function(event) {
+        event.preventDefault();
+        loadContent("src/partials/privacy_police.html", "hero");
     });
 
     function addCSS(href) {
@@ -198,10 +199,4 @@ $(document).ready(function() {
             link.remove();
         }
     }
-});
-
-// Funkcja do otwierania polityki prywatności
-$(document).on("click", "a[href='#privacy-policy']", function(event) {
-    event.preventDefault();
-    showPrivacyPolicy(); // Otwórz politykę prywatności
 });
