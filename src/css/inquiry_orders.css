@@ -288,4 +288,29 @@ button:hover {
         font-size: 0.9rem;
         padding: 0.8rem;
     }
+    /* Poprawka dla sekcji kontaktowej na urządzeniach mobilnych */
+@media (max-width: 768px) {
+    .contact-info {
+        padding: 0 20px; /* Równomierne odstępy z obu stron */
+        box-sizing: border-box; /* Uwzględnienie paddingu w szerokości */
+    }
+
+    /* Dodatkowe wyrównanie dla elementów wewnętrznych sekcji kontaktowej */
+    .contact-section {
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    /* Stylizacja dla każdego elementu kontaktowego */
+    .contact-item {
+        padding-left: 15px;
+        padding-right: 15px;
+        box-sizing: border-box;
+        width: 100%; /* Pełna szerokość */
+        margin: 0 auto;
+    }
+}
+
 }
