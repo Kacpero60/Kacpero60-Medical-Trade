@@ -126,7 +126,7 @@
 }
 
 .navigation-bar .dropdown-content {
-    background-color: #f9f9f9;
+    background-color: #ffffff; /* Zmiana tła na białe */
     padding: 10px;
     width: 100%;
     margin-top: 5px;
@@ -134,7 +134,9 @@
     transition: opacity 1.2s ease 0.3s, transform 0.5s ease 0.3s; /* Wolniejsze, z większym opóźnieniem */
     opacity: 0;
     transform: translateY(-15px); /* Początkowy przesunięty stan */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Dodanie delikatnego cienia dla estetyki */
 }
+
 
 .navigation-bar .dropdown:hover .dropdown-content,
 .navigation-bar .dropdown.expanded .dropdown-content {
@@ -163,25 +165,50 @@
 
 /* Responsywność dla rozwijanego menu na mniejszych ekranach */
 @media (max-width: 768px) {
-    .navigation-bar .dropdown-content {
-        position: relative;
-        width: 100%;
-        box-shadow: none;
-        display: none;
-    }
-
-    .navigation-bar.expanded .dropdown-content {
-        display: block;
-        width: 100%;
-        margin-top: 10px;
-    }
-
     .navigation-bar ul {
         flex-direction: column;
         gap: 15px;
+        align-items: center; /* Wyśrodkowanie linków w pionie */
     }
 
     .navigation-bar a {
         font-size: 1rem;
+        text-align: center;
     }
+
+    /* Ustawienia dla rozwijanego menu tylko na urządzeniach mobilnych */
+    .navigation-bar .dropdown-content {
+        display: none; /* Ukryte domyślnie */
+        position: relative;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    /* Kiedy menu jest rozbudowane, pokazuje podlinki */
+    .navigation-bar .dropdown.expanded .dropdown-content {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        text-align: center; /* Centrowanie podlinków */
+        position: static; /* Zapewnia, że są wyświetlane poniżej Specification */
+    }
+
+    /* Centrowanie dropdown w nawigacji */
+    .navigation-bar .dropdown {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navigation-bar .dropdown-content a {
+        display: block;
+        padding: 8px;
+    }
+    /* Stylizacja aktywnego linku */
+.dropdown-content a.active {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+
 }

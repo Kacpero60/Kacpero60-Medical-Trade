@@ -77,49 +77,34 @@ $(document).ready(function() {
         });
     }
 
-    // Funkcja do wyświetlania podlinków w SPECIFICATION na mniejszych ekranach
-    function toggleDropdown() {
-        const windowWidth = $(window).width();
+    // Obsługa rozwijanego menu "Specification" dla urządzeń mobilnych i desktopowych
+    function handleSpecificationDropdown() {
+        const specificationLink = $('.dropdown > a'); // Link "Specification"
+        const dropdownContent = $('.dropdown-content');
 
-        if (windowWidth <= 768) {
-            $('#specification-link').on('mouseenter touchstart', function(event) {
-                event.preventDefault();
-                $('.dropdown-content').css({
-                    'display': 'block',
-                    'opacity': '1',
-                    'transform': 'translateY(0)',
-                    'position': 'absolute',
-                    'top': '100%',
-                    'left': '0',
-                    'z-index': '1000'
-                });
-            });
+        specificationLink.on('click', function(event) {
+            event.preventDefault(); // Zablokuj domyślne działanie linku
+            if ($(window).width() <= 768) {
+                // Na urządzeniach mobilnych przełącza widoczność podlinków
+                dropdownContent.toggleClass('expanded');
+            }
+        });
 
-            $('#header').on('mouseleave touchend', function() {
-                $('.dropdown-content').css({
-                    'display': 'none',
-                    'opacity': '0',
-                    'transform': 'translateY(-10px)'
-                });
-            });
-
-            $('.dropdown-content a').on('click', function() {
-                $('.dropdown-content').css({
-                    'display': 'none',
-                    'opacity': '0',
-                    'transform': 'translateY(-10px)'
-                });
-            });
-        } else {
-            $('#specification-link').off('mouseenter touchstart');
-            $('#header').off('mouseleave touchend');
-            $('.dropdown-content a').off('click');
-            $('.dropdown-content').css('display', '');
+        // Obsługa hover dla większych ekranów
+        if ($(window).width() > 768) {
+            $('.dropdown').hover(
+                function() {
+                    dropdownContent.stop(true, true).fadeIn(200).css("display", "block");
+                },
+                function() {
+                    dropdownContent.stop(true, true).fadeOut(200);
+                }
+            );
         }
     }
 
-    toggleDropdown();
-    $(window).resize(toggleDropdown);
+    handleSpecificationDropdown();
+    $(window).resize(handleSpecificationDropdown);
 
     // Delegacja zdarzeń do przycisków i linków dynamicznie ładowanych
     $(document).on("click", "#expand-button", function() {
@@ -154,8 +139,7 @@ $(document).ready(function() {
     });
 
     $(document).on("click", "a[href='#specification']", function(event) {
-        event.preventDefault();
-        loadContent('src/partials/specification.html', 'hero'); // Dodano ładowanie treści dla podlinku specification
+        event.preventDefault(); // Zapobiega przekierowaniu dla linku Specification
     });
 
     $(document).on("click", "a[href='#disposable-equipment']", function(event) {
@@ -199,41 +183,38 @@ $(document).ready(function() {
             link.remove();
         }
     }
-    // Obsługa kliknięcia w link "Privacy Policy" tak, aby załadować sekcję jak inne strony
-$(document).on("click", "a[href='privacy_police.html']", function(event) {
-    event.preventDefault();
-    loadContent("src/partials/privacy_police.html", "hero", function() {
-        console.log("Załadowano privacy_police.html");
+    
+    $(document).on("click", "a[href='privacy_police.html']", function(event) {
+        event.preventDefault();
+        loadContent("src/partials/privacy_police.html", "hero", function() {
+            console.log("Załadowano privacy_police.html");
+        });
     });
-});
-$(document).ready(function() {
-    function handleSpecificationDropdown() {
-        const isMobile = $(window).width() <= 768;
-
-        if (isMobile) {
-            // Na urządzeniach mobilnych rozwijanie przy kliknięciu
-            $(".dropdown").off("mouseenter mouseleave"); // Wyłącz zdarzenia najechania
-            $(".dropdown").on("click", function(event) {
-                event.preventDefault(); // Zapobiegamy domyślnemu działaniu linku
-                $(".navigation-bar").toggleClass("expanded");
+    $(document).ready(function() {
+        // Usuwanie klasy aktywnej po kliknięciu w podlink
+        $(".dropdown-content a").on("click", function() {
+            $(".dropdown-content a").removeClass("active");
+            $(this).addClass("active"); // Tylko kliknięty link ma być aktywny
+        });
+    });
+    $(document).ready(function() {
+        // Istniejący kod pozostaje bez zmian
+    
+        // Dodajemy dodatkową obsługę dla urządzeń mobilnych (<= 768px)
+        if ($(window).width() <= 768) {
+            $(".dropdown-content a").on("click", function(event) {
+                event.preventDefault(); // Zapobiega domyślnemu działaniu linku
+                const link = $(this);
+    
+                // Dodaj klasę aktywną tylko na chwilę
+                link.addClass("active");
+    
+                // Po krótkim czasie usuń klasę, aby wróciło do pierwotnego stanu
+                setTimeout(function() {
+                    link.removeClass("active");
+                }, 200); // Czas w milisekundach (0.2 sekundy)
             });
-        } else {
-            // Na większych ekranach rozwijanie przy najechaniu
-            $(".dropdown").off("click"); // Wyłącz kliknięcie
-            $(".dropdown").hover(
-                function() {
-                    $(this).find(".dropdown-content").stop(true, true).fadeIn(200).css("display", "block");
-                },
-                function() {
-                    $(this).find(".dropdown-content").stop(true, true).fadeOut(200);
-                }
-            );
         }
-    }
-
-    // Wywołaj funkcję przy ładowaniu strony i przy zmianie rozmiaru okna
-    handleSpecificationDropdown();
-    $(window).resize(handleSpecificationDropdown);
-});
-
+    });
+    
 });
