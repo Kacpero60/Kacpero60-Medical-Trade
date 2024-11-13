@@ -16,13 +16,14 @@
 
 .footer-logo img {
   height: 60px;
-  margin-bottom: 10px; /* Dodano odstęp poniżej logo */
+  margin-bottom: 10px;
 }
 
 .footer-links {
   display: flex;
   justify-content: center;
   margin: 10px 0;
+  width: 100%; /* Dodano, aby linki zajmowały całą szerokość */
 }
 
 .footer-links ul {
@@ -31,6 +32,8 @@
   gap: 20px;
   padding: 0;
   margin: 0;
+  justify-content: center; /* Wyśrodkowanie linków */
+  flex-wrap: wrap; /* Pozwól linkom zawijać się na mniejszych ekranach */
 }
 
 .footer-links a {
@@ -97,10 +100,16 @@
 
   .footer-links ul {
     gap: 10px;
+    align-items: center; /* Wyśrodkowanie linków na małych ekranach */
+    width: 100%;
+    padding: 0;
+    margin: 0;
   }
 
   .footer-links a {
     font-size: 0.9rem;
+    width: 100%; /* Ustawienie linków na pełną szerokość na bardzo małych ekranach */
+    text-align: center; /* Wyśrodkowanie tekstu linków */
   }
 
   .footer-bottom {
