@@ -186,6 +186,50 @@ button:hover {
     border-radius: 50%;
     animation: floatBubble 14s linear infinite;
 }
+/* Stylizacja dla sekcji wiadomości */
+.message-group {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    border: 1px solid #b3d1f2;
+    padding: 0.5rem;
+    border-radius: 15px; /* Zaokrąglone rogi */
+    background: #eaf4fb;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.message-group img {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+    align-self: start;
+}
+
+.message-group textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+    resize: none; /* Wyłączenie możliwości zmiany rozmiaru */
+    font-family: inherit;
+    height: 80px; /* Ustawienie wysokości na kilka linii tekstu */
+    line-height: 1.5;
+    border-radius: 10px;
+}
+
+/* Stylizacja na hover i focus dla pola tekstowego */
+.message-group textarea:focus {
+    background-color: #f0f7ff;
+}
+
+.message-group textarea::placeholder {
+    color: #888;
+    font-style: italic;
+}
 
 @keyframes floatBubble {
     0% {
