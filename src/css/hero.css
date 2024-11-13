@@ -149,7 +149,7 @@
     width: 22%; /* Zachowanie oryginalnej szerokości na dużych ekranach */
     min-width: 300px; /* Minimalna szerokość, aby były czytelne na mniejszych ekranach */
     padding: 30px;
-    background-color: #b3e5fc; /* Jasnoniebieski kolor dla wszystkich kafelków */
+    background-color: rgba(0, 123, 255, 0.1); /* Jasnoniebieski kolor dla wszystkich kafelków */
     border-radius: 20px; /* Zaokrąglenie rogów */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     text-align: center;
