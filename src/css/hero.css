@@ -336,4 +336,43 @@
         font-size: 0.7rem;
         padding: 5px 10px; /* Jeszcze mniejsze odstępy wokół przycisku */
     }
+    /* Ustawienia dla sekcji hero na urządzeniach mobilnych */
+/* Ustawienia dla urządzeń mobilnych */
+@media (max-width: 768px) {
+    /* Ustawienie marginesów po obu stronach */
+    .hero-section,
+    .use-cases-section,
+    .specialization-section,
+    .info-section {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+    }
+
+    /* Centrowanie tekstu, jeśli jest taka potrzeba */
+    .hero-content,
+    .use-cases-title,
+    .specialization-title,
+    .info-title {
+        text-align: center;
+    }
+}
+/* Poprawka dla sekcji Our Specializations na urządzeniach mobilnych */
+@media (max-width: 768px) {
+    .specialization-section {
+        padding-left: 15px;
+        padding-right: 15px;
+        box-sizing: border-box;
+    }
+    
+    .specialization-grid, .specialization-item {
+        padding-left: 5px;
+        padding-right: 5px;
+        box-sizing: border-box;
+    }
+}
+
+
 }
