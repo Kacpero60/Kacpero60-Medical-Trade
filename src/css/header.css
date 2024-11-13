@@ -43,12 +43,29 @@
 
 /* Responsywność dla mniejszych ekranów */
 @media screen and (max-width: 768px) {
-    .main-header { height: auto; flex-direction: column; align-items: flex-start; }
-    .main-header .logo-section { padding-left: 0; background-size: cover; z-index: 1; }
-    .main-header .logo img { height: 100px; }
-    .header-slider { display: none; }
-    .main-header .logo-section { justify-content: center; background-position: center; }
+    .main-header {
+        width: 100vw; /* Zapewnia pełną szerokość ekranu, eliminując przesunięcie */
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        overflow-x: hidden; /* Zapobiega przesunięciu w poziomie */
+    }
+    .main-header .logo-section {
+        padding-left: 0;
+        background-size: cover;
+        z-index: 1;
+        width: 100%; /* Pełna szerokość logo na mobilnych */
+        justify-content: center;
+        background-position: center;
+    }
+    .main-header .logo img {
+        height: 100px;
+    }
+    .header-slider {
+        display: none;
+    }
 }
+
 
 /* Stylizacja paska nawigacyjnego */
 .navigation-bar {
@@ -210,5 +227,38 @@
     color: #ffffff;
 }
 
+/* Dostosowanie nagłówka na urządzenia mobilne */
+@media screen and (max-width: 768px) {
+    /* Ustawienie szerokości na pełen widok i ukrycie poziomego przewijania */
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        overflow-x: hidden; /* Ukrycie przewijania w poziomie */
+    }
+    
+    .main-header {
+        width: 100vw; /* Ustawienie pełnej szerokości dla nagłówka */
+        overflow-x: hidden; /* Zapobiega przewijaniu w poziomie */
+    }
+
+    .navigation-bar {
+        width: 100%; /* Ustawienie pełnej szerokości nawigacji */
+    }
+
+    /* Wyrównanie elementów do środka */
+    .navigation-bar ul {
+        padding: 0;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Ustawienie szerokości dropdowna na 100% */
+    .dropdown-content {
+        width: 100%; /* Pełna szerokość rozwijanego menu */
+        box-sizing: border-box;
+    }
+}
 
 }
