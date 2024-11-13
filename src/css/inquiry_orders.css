@@ -102,7 +102,22 @@
 .contact-item a:hover {
     text-decoration: underline;
 }
+/* Poprawka dla sekcji kontaktowej na urządzeniach mobilnych */
+@media (max-width: 768px) {
+    .contact-info {
+        padding-left: 15px;
+        padding-right: 15px;
+        box-sizing: border-box;
+    }
 
+    /* Dodatkowe wyrównanie dla elementów wewnętrznych sekcji kontaktowej */
+    .contact-section,
+    .contact-item {
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+    }
+}
 /* Stylizacja grupy formularza */
 .form-group {
     display: flex;
