@@ -36,42 +36,18 @@
 }
 
 @keyframes slideBackground {
-    0%, 20% {
-        background: url('/src/images/medyczne.jpg') no-repeat center center/cover;
-    }
-    25%, 50% {
-        background: url('/src/images/medyczne2.jpg') no-repeat center center/cover;
-    }
-    55%, 100% {
-        background: url('/src/images/medyczne4.jpg') no-repeat center center/cover;
-    }
+    0%, 20% { background: url('/src/images/medyczne.jpg') no-repeat center center/cover; }
+    25%, 50% { background: url('/src/images/medyczne2.jpg') no-repeat center center/cover; }
+    55%, 100% { background: url('/src/images/medyczne4.jpg') no-repeat center center/cover; }
 }
 
-/* Stylizacja responsywna dla mniejszych ekranów */
+/* Responsywność dla mniejszych ekranów */
 @media screen and (max-width: 768px) {
-    .main-header {
-        height: 250px;
-    }
-
-    .main-header .logo-section {
-        padding-left: 0;
-        background: url('/src/images/medyczne.jpg') no-repeat center center/cover;
-        background-size: cover;
-        z-index: 1;
-    }
-
-    .main-header .logo img {
-        height: 100px;
-    }
-
-    .header-slider {
-        display: none;
-    }
-
-    .main-header .logo-section {
-        justify-content: center;
-        background-position: center;
-    }
+    .main-header { height: auto; flex-direction: column; align-items: flex-start; }
+    .main-header .logo-section { padding-left: 0; background-size: cover; z-index: 1; }
+    .main-header .logo img { height: 100px; }
+    .header-slider { display: none; }
+    .main-header .logo-section { justify-content: center; background-position: center; }
 }
 
 /* Stylizacja paska nawigacyjnego */
@@ -95,10 +71,7 @@
     align-items: center;
 }
 
-.navigation-bar li {
-    display: flex;
-    align-items: center;
-}
+.navigation-bar li { display: flex; align-items: center; }
 
 .navigation-bar a {
     text-decoration: none;
@@ -124,15 +97,8 @@
     transition: width 0.3s ease;
 }
 
-.navigation-bar > ul > li > a:hover::after {
-    width: 100%;
-}
-
-/* Stylizacja głównego linku z efektem powiększenia przy najechaniu */
-.navigation-bar > ul > li > a:hover {
-    color: #007bff;
-}
-
+.navigation-bar > ul > li > a:hover::after { width: 100%; }
+.navigation-bar > ul > li > a:hover { color: #007bff; }
 
 /* Stylizacja ikony telefonu */
 .phone-icon {
@@ -166,7 +132,7 @@
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    z-index: 1;
+    z-index: 1000;
     margin-top: 5px;
     opacity: 0;
     transform: translateY(-10px);
@@ -174,15 +140,20 @@
     display: none;
 }
 
-.navigation-bar .dropdown-content a {
-    color: #333;
-    padding: 8px 12px;
-    font-size: 1rem;
-    text-decoration: none;
+.navigation-bar .dropdown:hover .dropdown-content {
+    opacity: 1;
+    transform: translateY(0);
     display: block;
+}
+
+.navigation-bar .dropdown-content a {
+    padding: 8px 12px;
+    display: block;
+    color: #333;
+    text-decoration: none;
     background-color: #f9f9f9;
     border-radius: 10px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .navigation-bar .dropdown-content a:hover {
@@ -191,62 +162,19 @@
     transform: scale(1.05);
 }
 
-/* Pokaż menu rozwijane przy najechaniu na większych ekranach */
-.navigation-bar .dropdown:hover .dropdown-content {
-    opacity: 1;
-    transform: translateY(0);
-    display: block;
-}
-/* Stylizacja dropdown dla SPECIFICATION */
-.navigation-bar .dropdown-content {
-    display: none; /* Ukryte domyślnie */
-    position: absolute;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    width: 200px;
-    margin-top: 10px;
-    z-index: 1000;
-}
-
-.navigation-bar .dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.navigation-bar .dropdown-content a {
-    padding: 8px 12px;
-    display: block;
-    color: #333;
-    text-decoration: none;
-    transition: background 0.3s;
-}
-
-.navigation-bar .dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-
-/* Stylizacja, aby rozsuwało się dynamicznie na mniejszych ekranach */
+/* Stylizacja responsywna dla rozwijanego menu na mniejszych ekranach */
 @media (max-width: 768px) {
     .navigation-bar .dropdown-content {
         position: relative;
         width: 100%;
         box-shadow: none;
+        display: none;
     }
 
-    .navigation-bar .dropdown {
+    .navigation-bar.expanded .dropdown-content {
         display: block;
-    }
-
-    .navigation-bar .dropdown-content a {
-        padding: 12px;
-        text-align: left;
-    }
-}
-
-/* Stylizacja responsywna dla mniejszych ekranów */
-@media screen and (max-width: 768px) {
-    .navigation-bar {
-        padding: 10px 0;
+        width: 100%;
+        margin-top: 10px;
     }
 
     .navigation-bar ul {
@@ -256,15 +184,5 @@
 
     .navigation-bar a {
         font-size: 1rem;
-    }
-
-    .navigation-bar .dropdown-content {
-        position: fixed;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 160px;
-        display: none;
-        opacity: 1;
     }
 }

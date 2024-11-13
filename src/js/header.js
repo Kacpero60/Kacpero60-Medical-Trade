@@ -1,53 +1,175 @@
-// header.js
 $(document).ready(function() {
-    $('#header').load('/src/partials/header.html');
-});
+    // Ładowanie zawartości header, hero oraz footer
+    $('#header').load('src/partials/header.html', function() {
+        console.log("Załadowano header.html");
+    });
 
-// hero.js
-$(document).ready(function() {
-    $('#hero').load('/src/partials/hero.html');
-});
+    loadContent('src/partials/hero.html', 'hero', function() {
+        console.log("Załadowano hero.html");
+    });
 
-// footer.js
-$(document).ready(function() {
-    $('#footer').load('/src/partials/footer.html');
-});
+    $('#footer').load('src/partials/footer.html', function() {
+        console.log("Załadowano footer.html");
+    });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const headerLink = document.getElementById("header-link");
-    
-    // Sprawdzenie, czy element istnieje, zanim dodamy nasłuch zdarzeń
-    if (headerLink) {
-        headerLink.addEventListener("click", () => {
-            console.log("Kliknięto link w nagłówku!");
+    // Funkcja do dynamicznego ładowania plików HTML do kontenera z animacją przejścia
+    function loadContent(filePath, targetElementId, callback) {
+        const targetElement = document.getElementById(targetElementId);
+        targetElement.classList.add('fade-out');
+
+        targetElement.addEventListener('animationend', function onFadeOut() {
+            targetElement.removeEventListener('animationend', onFadeOut);
+
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) throw new Error(`Błąd: ${response.status}`);
+                    return response.text();
+                })
+                .then(data => {
+                    targetElement.innerHTML = data;
+                    console.log(`Zawartość załadowana do ${targetElementId}`);
+
+                    if (filePath.includes('inquiry_orders.html')) {
+                        addCSS('src/css/inquiry_orders.css');
+                    } else if (filePath.includes('gallery.html')) {
+                        addCSS('src/css/gallery.css');
+                    } else if (filePath.includes('specification.html')) {
+                        addCSS('src/css/specification.css');
+                    } else if (filePath.includes('disposable_equipment.html')) {
+                        addCSS('src/css/disposable_equipment.css');
+                    } else if (filePath.includes('medical_devices.html')) {
+                        addCSS('src/css/medical_devices.css');
+                    } else if (filePath.includes('hospitals_development.html')) {
+                        addCSS('src/css/hospitals_development.css');
+                    } else if (filePath.includes('privacy_police.html')) {
+                        addCSS('src/css/privacy_police.css');
+                    } else {
+                        removeCSS('src/css/inquiry_orders.css');
+                        removeCSS('src/css/gallery.css');
+                        removeCSS('src/css/specification.css');
+                        removeCSS('src/css/disposable_equipment.css');
+                        removeCSS('src/css/medical_devices.css');
+                        removeCSS('src/css/hospitals_development.css');
+                        removeCSS('src/css/privacy_police.css');
+                    }
+
+                    targetElement.classList.remove('fade-out');
+                    targetElement.classList.add('fade-in');
+
+                    targetElement.addEventListener('animationend', function onFadeIn() {
+                        targetElement.classList.remove('fade-in');
+                        targetElement.removeEventListener('animationend', onFadeIn);
+                    });
+
+                    if (typeof callback === "function") {
+                        callback();
+                    }
+                })
+                .catch(error => console.error("Błąd ładowania treści:", error));
         });
-    } else {
-        console.warn("Element #header-link nie został znaleziony.");
     }
-});
 
-// header.js
-$(document).ready(function() {
-    $('#header').load('/src/partials/header.html', function() {
-        // Dodaj obsługę kliknięcia dla linku Inquiry & Orders
-        const inquiryLink = document.getElementById("inquiry");
-        if (inquiryLink) {
-            inquiryLink.addEventListener("click", (event) => {
+    // Obsługa rozwijanego menu SPECIFICATION w zależności od wielkości ekranu
+    function handleSpecificationDropdown() {
+        const isMobile = $(window).width() <= 768;
+
+        if (isMobile) {
+            $(".dropdown").off("mouseenter mouseleave");
+            $(".dropdown").on("click", function(event) {
                 event.preventDefault();
-                loadContent('/src/partials/inquiry_orders.html', 'hero');
+                $(".navigation-bar").toggleClass("expanded");
             });
+        } else {
+            $(".dropdown").off("click");
+            $(".dropdown").hover(
+                function() {
+                    $(this).find(".dropdown-content").stop(true, true).fadeIn(200).css("display", "block");
+                },
+                function() {
+                    $(this).find(".dropdown-content").stop(true, true).fadeOut(200);
+                }
+            );
+        }
+    }
+
+    handleSpecificationDropdown();
+    $(window).resize(handleSpecificationDropdown);
+
+    // Delegacja zdarzeń do przycisków i linków dynamicznie ładowanych
+    $(document).on("click", "#expand-button", function() {
+        const $details = $("#hero-details");
+        if ($details.is(":visible")) {
+            $details.slideUp();
+            $(this).text("Learn More");
+        } else {
+            $details.slideDown();
+            $(this).text("Show Less");
         }
     });
-});
 
-document.addEventListener("DOMContentLoaded", function() {
-    const headerLink = document.getElementById("header-link");
-    if (headerLink) {
-        headerLink.addEventListener("click", () => {
-            console.log("Kliknięto link w nagłówku!");
-            // tutaj możesz dodać inne akcje
-        });
-    } else {
-        console.warn("Element #header-link nie został znaleziony. Sprawdź, czy identyfikator jest poprawny.");
+    $(document).on("click", "#contact-us-button", function(event) {
+        event.preventDefault();
+        loadContent('src/partials/inquiry_orders.html', 'hero');
+    });
+
+    $(document).on("click", 'a[href="#products"]', function(event) {
+        event.preventDefault();
+        loadContent('src/partials/inquiry_orders.html', 'hero');
+    });
+
+    $(document).on("click", 'a[href="#about-us"]', function(event) {
+        event.preventDefault();
+        loadContent('src/partials/hero.html', 'hero');
+    });
+
+    $(document).on("click", "a[href='#gallery']", function(event) {
+        event.preventDefault();
+        loadContent('src/partials/gallery.html', 'hero');
+    });
+
+    $(document).on("click", "a[href='#specification']", function(event) {
+        event.preventDefault();
+        loadContent('src/partials/specification.html', 'hero');
+    });
+
+    $(document).on("click", "a[href='#disposable-equipment']", function(event) {
+        event.preventDefault();
+        loadContent('src/partials/disposable_equipment.html', 'hero');
+    });
+
+    $(document).on("click", "a[href='#medical-devices']", function(event) {
+        event.preventDefault();
+        loadContent('src/partials/medical_devices.html', 'hero');
+    });
+
+    $(document).on("click", "a[href='#hospital-development']", function(event) {
+        event.preventDefault();
+        loadContent('src/partials/hospitals_development.html', 'hero');
+    });
+
+    $(document).on("click", "#inquiry-footer", function(event) {
+        event.preventDefault();
+        loadContent('src/partials/inquiry_orders.html', 'hero');
+    });
+
+    $(document).on("click", "a[href='#privacy-policy']", function(event) {
+        event.preventDefault();
+        loadContent("src/partials/privacy_police.html", "hero");
+    });
+
+    function addCSS(href) {
+        if (!document.querySelector(`link[href="${href}"]`)) {
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = href;
+            document.head.appendChild(link);
+        }
+    }
+
+    function removeCSS(href) {
+        const link = document.querySelector(`link[href="${href}"]`);
+        if (link) {
+            link.remove();
+        }
     }
 });

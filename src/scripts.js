@@ -206,5 +206,34 @@ $(document).on("click", "a[href='privacy_police.html']", function(event) {
         console.log("Załadowano privacy_police.html");
     });
 });
+$(document).ready(function() {
+    function handleSpecificationDropdown() {
+        const isMobile = $(window).width() <= 768;
+
+        if (isMobile) {
+            // Na urządzeniach mobilnych rozwijanie przy kliknięciu
+            $(".dropdown").off("mouseenter mouseleave"); // Wyłącz zdarzenia najechania
+            $(".dropdown").on("click", function(event) {
+                event.preventDefault(); // Zapobiegamy domyślnemu działaniu linku
+                $(".navigation-bar").toggleClass("expanded");
+            });
+        } else {
+            // Na większych ekranach rozwijanie przy najechaniu
+            $(".dropdown").off("click"); // Wyłącz kliknięcie
+            $(".dropdown").hover(
+                function() {
+                    $(this).find(".dropdown-content").stop(true, true).fadeIn(200).css("display", "block");
+                },
+                function() {
+                    $(this).find(".dropdown-content").stop(true, true).fadeOut(200);
+                }
+            );
+        }
+    }
+
+    // Wywołaj funkcję przy ładowaniu strony i przy zmianie rozmiaru okna
+    handleSpecificationDropdown();
+    $(window).resize(handleSpecificationDropdown);
+});
 
 });
