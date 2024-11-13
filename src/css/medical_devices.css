@@ -2,9 +2,11 @@
 .page-container {
     width: 100%;
     background: linear-gradient(135deg, #e0f7fa); /* Delikatny gradient jako tło sekcji */
-    padding: auto; /* Padding wewnętrzny dla estetyki */
+    padding: 20px; /* Dodanie paddingu wewnętrznego */
     border-radius: 10px; /* Zaokrąglenie rogów */
+    box-sizing: border-box; /* Ustawienie box-sizing */
 }
+
 /* Tło nagłówka */
 .title-header {
     position: relative; /* Umożliwienie umieszczenia tła */
@@ -17,14 +19,15 @@
     border-radius: 10px; /* Zaokrąglenie rogów */
     margin: 0; /* Usunięcie marginesu */
     padding: 20px 0; /* Tylko padding w pionie */
+    box-sizing: border-box;
 }
-
 
 /* Kontener dla sekcji */
 .content-wrapper {
     display: grid; /* Użycie grid do układania elementów */
     grid-template-columns: repeat(2, 1fr); /* Dwie kolumny */
     gap: 20px; /* Odstęp między sekcjami */
+    box-sizing: border-box;
 }
 
 /* Sekcja zawierająca obraz i tekst */
@@ -37,6 +40,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     margin: 0 auto; /* Wyśrodkowanie sekcji */
+    box-sizing: border-box; /* Ustawienie box-sizing */
 }
 
 .content-section:hover {
@@ -46,6 +50,8 @@
 /* Kontener na obraz */
 .image-container {
     flex: 1;
+    padding-right: 15px; /* Dodanie odstępu po prawej stronie */
+    box-sizing: border-box;
 }
 
 .image-container img {
@@ -63,22 +69,29 @@
     font-size: 1.1rem; /* Ustawienie wielkości czcionki */
     line-height: 1.8;
     margin: 0; /* Usunięcie marginesu dla nagłówka */
+    box-sizing: border-box;
 }
 
 /* Stylizacja responsywna */
 @media screen and (max-width: 768px) {
     .content-wrapper {
         grid-template-columns: 1fr; /* Jedna kolumna na mniejszych ekranach */
+        padding: 0 15px; /* Dodanie paddingu po bokach */
+        box-sizing: border-box;
     }
 
     .content-section {
         flex-direction: column; /* Kolumnowy układ na mniejszych ekranach */
         align-items: center;
+        padding: 20px; /* Dodanie paddingu */
         width: 100%; /* Pełna szerokość */
+        box-sizing: border-box; /* Box-sizing dla poprawnego odstępu */
     }
 
     .image-container, .text-container {
         max-width: 100%; /* Szerokość na mniejszych ekranach */
+        padding: 0 15px; /* Dodanie paddingu dla lepszego wyśrodkowania */
+        box-sizing: border-box;
     }
 
     .image-container img {
