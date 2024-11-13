@@ -141,17 +141,20 @@
     gap: 20px;
     padding: 50px 0;
     background-color: #f4f7fa;
+    flex-wrap: wrap; /* Umożliwienie zawijania elementów na mniejszych ekranach */
 }
 
+/* Ustawienia dla kafelków info */
 .info-block {
-    width: 22%;
-    min-width: 300px;
+    width: 22%; /* Zachowanie oryginalnej szerokości na dużych ekranach */
+    min-width: 300px; /* Minimalna szerokość, aby były czytelne na mniejszych ekranach */
     padding: 30px;
-    background: #ffffff;
+    background-color: #b3e5fc; /* Jasnoniebieski kolor dla wszystkich kafelków */
     border-radius: 20px; /* Zaokrąglenie rogów */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #003366;
 }
 
 .info-block:hover {
@@ -159,19 +162,14 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.info-title {
-    font-size: 2.2rem; /* Zwiększenie rozmiaru czcionki */
-    color: #004080;
-    margin-bottom: 15px;
+/* Responsywność dla sekcji info na dużych ekranach */
+@media (min-width: 1024px) {
+    .info-section {
+        flex-wrap: nowrap; /* Ustawienie kafelków obok siebie na dużych ekranach */
+    }
 }
 
-.info-text {
-    font-size: 1.2rem; /* Zwiększenie rozmiaru czcionki */
-    color: #333333;
-    margin-bottom: 25px;
-}
-
-/* Przycisk */
+/* Stylizacja przycisku w info-block */
 .info-button {
     padding: 12px 24px;
     font-size: 1rem;
@@ -191,26 +189,6 @@
 .info-link {
     color: #ffffff;
     text-decoration: none;
-}
-
-.info-block-home {
-    background: linear-gradient(to right, #6ec1e4, #5b9bd5);
-    color: #ffffff;
-}
-
-.info-block-inquiry {
-    background: linear-gradient(to right, #7db5d2, #5e99c4);
-    color: #ffffff;
-}
-
-.info-block-gallery {
-    background: linear-gradient(to right, #4ca1af, #0094da);
-    color: #ffffff;
-}
-
-.info-block-specification {
-    background: linear-gradient(to right, #4da6ff, #337ab7); /* Zmiana koloru na niebieski gradient */
-    color: #ffffff;
 }
 
 /* Linki pod "Specification" */
@@ -373,6 +351,5 @@
         box-sizing: border-box;
     }
 }
-
 
 }
