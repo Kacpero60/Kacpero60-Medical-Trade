@@ -7,11 +7,17 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Konfiguracja Nodemailer dla Rocketmail/Yahoo
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.mail.yahoo.com', // Serwer SMTP dla Rocketmail (część Yahoo)
+  port: 587,                    // Port dla SMTP z TLS
+  secure: false,                 // Ustaw na false dla TLS (port 587)
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
+    user: process.env.EMAIL_USER, // Adres e-mail, np. office@jasema.pl
+    pass: process.env.EMAIL_PASS  // Hasło do tego konta
+  },
+  tls: {
+    ciphers: 'SSLv3'              // Wymuszenie szyfrowania TLS
   }
 });
 
@@ -45,7 +51,7 @@ app.post('/send-email', (req, res) => {
   });
 });
 
-const PORT = 3000;
+const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Serwer działa na porcie ${PORT}`);
 });
