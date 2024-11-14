@@ -19,7 +19,7 @@ app.post('/send-email', (req, res) => {
 
   const mailOptions = {
     from: 'twojemail@gmail.com',
-    to: 'office@medicaltrade.com',
+    to: 'office@jasema.pl',
     subject: `Nowa wiadomość od ${companyName}`,
     html: `
       <h3>Nowa wiadomość z formularza kontaktowego</h3>
