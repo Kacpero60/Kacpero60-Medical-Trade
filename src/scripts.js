@@ -223,21 +223,18 @@ $(document).ready(function() {
           form.addEventListener('submit', function(event) {
             event.preventDefault(); // Zapobiega domyślnemu przesłaniu formularza
       
-            // Pobranie danych z formularza
             const data = {
-              company: document.querySelector('[name="company"]').value,
+              companyName: document.querySelector('[name="company"]').value,
               email: document.querySelector('[name="email"]').value,
-              zipcode: document.querySelector('[name="zipcode"]').value,
+              zipCode: document.querySelector('[name="zipcode"]').value,
               country: document.querySelector('[name="country"]').value,
-              product: document.querySelector('[name="product"]').value,
-              reference: document.querySelector('[name="reference"]').value,
+              productName: document.querySelector('[name="product"]').value,
+              referenceCode: document.querySelector('[name="reference"]').value,
               quantity: document.querySelector('[name="quantity"]').value,
-              shipping: document.querySelector('[name="shipping"]').value,
               message: document.querySelector('[name="message"]').value
             };
       
-            // Wysłanie danych do serwera
-            fetch('http://localhost:3000/send-email', {
+            fetch('http://localhost:5000/send-email', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
@@ -259,5 +256,6 @@ $(document).ready(function() {
           console.error('Formularz o id "inquiry-form" nie został znaleziony.');
         }
       });
+      
       
 });
