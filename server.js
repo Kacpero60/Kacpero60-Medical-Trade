@@ -55,3 +55,8 @@ const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Serwer działa na porcie ${PORT}`);
 });
+
+app.get('/', (req, res) => {
+    res.send('Backend działa poprawnie');
+  });
+  
