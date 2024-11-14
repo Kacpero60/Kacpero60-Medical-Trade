@@ -60,3 +60,4 @@ app.get('/', (req, res) => {
     res.send('Backend działa poprawnie');
   });
   
+  console.log('Użytkownik e-mail:', process.env.EMAIL_USER);
