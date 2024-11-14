@@ -132,6 +132,17 @@
     font-size: 1.2rem;
     color: #333;
 }
+@media (max-width: 768px) {
+    .use-cases-grid {
+        flex-direction: column; /* Ustawienie elementów w jednej kolumnie */
+        align-items: center;
+    }
+
+    .use-case-item {
+        width: 90%; /* Dostosowanie szerokości elementów do szerokości ekranu */
+        margin-bottom: 20px; /* Dodanie odstępu między elementami */
+    }
+}
 
 /* Stylizacja sekcji informacyjnej */
 .info-section {
