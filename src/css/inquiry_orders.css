@@ -356,5 +356,83 @@ button:hover {
         margin: 0 auto;
     }
 }
+/* Responsywność dla sekcji "Contact with Us" na urządzeniach mobilnych */
+@media (max-width: 768px) {
+    /* Wyśrodkowanie całej sekcji kontaktowej */
+    .contact-info {
+        padding-left: 15px;
+        padding-right: 15px;
+        box-sizing: border-box;
+        text-align: center; /* Wyśrodkowanie zawartości */
+        margin: 0 auto; /* Wyśrodkowanie kontenera */
+        width: 100%; /* Pełna szerokość */
+    }
+
+    /* Wyświetlanie elementów kontaktowych w kolumnie */
+    .contact-section {
+        display: flex;
+        flex-direction: column; /* Zmiana układu na kolumnowy */
+        align-items: center;
+        gap: 15px;
+    }
+
+    /* Ustawienie pełnej szerokości dla elementów kontaktowych */
+    .contact-item {
+        width: 100%; /* Pełna szerokość na mobilnych ekranach */
+        text-align: center; /* Wyśrodkowanie tekstu */
+        padding: 10px;
+    }
+
+    .contact-item img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px; /* Odstęp poniżej ikony */
+    }
+
+    .contact-item h3 {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+    }
+
+    .contact-item p {
+        font-size: 1rem;
+    }
+
+    .contact-item a {
+        font-size: 1rem;
+    }
+
+    /* Zmiana wielkości tytułu sekcji */
+    .contact-info h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+}
+
+/* Dla bardzo małych ekranów (poniżej 480px) */
+@media (max-width: 480px) {
+    .contact-info h2 {
+        font-size: 1.4rem; /* Zmniejszenie rozmiaru tytułu */
+    }
+
+    .contact-item {
+        width: 100%; /* Pełna szerokość dla kontaktów */
+        padding: 8px;
+    }
+
+    .contact-item img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .contact-item h3 {
+        font-size: 1rem;
+    }
+
+    .contact-item p,
+    .contact-item a {
+        font-size: 0.9rem;
+    }
+}
 
 }
