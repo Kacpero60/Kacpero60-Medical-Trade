@@ -116,3 +116,24 @@
     font-size: 0.8rem;
   }
 }
+/* Stylizacja dla linku SPECIFICATION */
+#specification-link {
+  display: inline-block;
+  font-size: 1.2rem; /* Zwiększ rozmiar czcionki na większych ekranach */
+  font-weight: bold;
+  text-align: center;
+  margin: 10px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+  color: #333333;
+}
+
+/* Responsywność dla telefonów komórkowych i małych ekranów */
+@media (max-width: 480px) {
+  #specification-link {
+    font-size: 1rem; /* Zmniejszenie rozmiaru czcionki na małych ekranach */
+    text-align: center; /* Wyśrodkowanie tekstu */
+    width: 100%; /* Sprawia, że cały link zajmuje pełną szerokość */
+    margin: 10px 0; /* Dodanie marginesów wokół linku */
+  }
+}
