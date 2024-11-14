@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
@@ -9,8 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'twojemail@gmail.com',
-    pass: 'twoje_haslo'
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
   }
 });
 
@@ -18,7 +19,7 @@ app.post('/send-email', (req, res) => {
   const { companyName, email, zipCode, productName, referenceCode, quantity, message } = req.body;
 
   const mailOptions = {
-    from: 'twojemail@gmail.com',
+    from: process.env.EMAIL_USER,
     to: 'office@jasema.pl',
     subject: `Nowa wiadomość od ${companyName}`,
     html: `
