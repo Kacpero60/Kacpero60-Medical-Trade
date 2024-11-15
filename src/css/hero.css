@@ -1,6 +1,4 @@
 /* Stylizacja sekcji hero */
-
-
 .hero-section {
     position: relative;
     width: 100%;
@@ -88,6 +86,82 @@
     font-size: 2.5rem;
     margin-bottom: 40px;
     color: #004080;
+}
+/* Stylizacja dla Applications of Our Medical Equipment */
+.applications-section {
+    padding: 50px 0;
+    text-align: center;
+    background: #e7f0ff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+.applications-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #004080;
+}
+
+.applications-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.application-item {
+    width: 30%;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.application-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.application-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.application-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #0078d4;
+}
+
+.application-item p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Responsywność dla Applications of Our Medical Equipment */
+@media (max-width: 1024px) {
+    .applications-grid {
+        justify-content: space-between;
+    }
+    .application-item {
+        width: 45%; /* Dwa elementy w rzędzie */
+    }
+}
+
+@media (max-width: 768px) {
+    .applications-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .application-item {
+        width: 90%; /* Jeden element na cały rząd */
+        margin-bottom: 20px;
+    }
 }
 
 /* Sekcje z siatką */
