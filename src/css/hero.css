@@ -364,3 +364,171 @@
 }
 
 }
+/* General responsive adjustments for hero-section and related sections */
+.hero-section, .use-cases-section, .specialization-section, .info-section {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* For iPad Pro (1024x1366) */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-text {
+        font-size: 1.3rem;
+    }
+
+    .hero-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    .use-case-item, .specialization-item, .info-block {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+/* For Surface Pro 7 (912x1368) */
+@media (max-width: 912px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-text {
+        font-size: 1.2rem;
+    }
+
+    .hero-button {
+        font-size: 0.8rem;
+        padding: 8px 16px;
+    }
+
+    .use-case-item, .specialization-item, .info-block {
+        width: 90%;
+        margin: 10px 0;
+    }
+}
+
+/* For Galaxy S8+ (360x740) and similar small mobile devices */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .hero-text {
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+
+    .hero-button {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+    }
+
+    .use-case-item, .specialization-item, .info-block {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+/* General styling for .info-section on smaller screens */
+@media (max-width: 480px) {
+    .info-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px; /* Adds padding for better spacing */
+        gap: 20px; /* Ensures adequate space between items */
+    }
+
+    .info-block {
+        width: 100%; /* Full width for narrow screens */
+        padding: 15px;
+        margin-bottom: 20px;
+        font-size: 1rem; /* Adjusts text size for readability */
+    }
+
+    .info-block h3 {
+        font-size: 1.2rem;
+    }
+
+    .info-button {
+        padding: 8px 15px; /* Smaller padding for buttons */
+        font-size: 0.9rem;
+    }
+}
+
+/* For .hero-section adjustments on Galaxy S8 */
+@media (max-width: 360px) {
+    .hero-section {
+        padding: 15px;
+        height: auto;
+        text-align: center;
+    }
+
+    .hero-content {
+        position: static;
+        transform: none;
+        padding-top: 20px;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-text {
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+
+    .hero-button {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}
+
+/* For Surface Duo (540x720) */
+@media (max-width: 540px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-text {
+        font-size: 1.1rem;
+    }
+
+    .hero-button {
+        font-size: 0.8rem;
+        padding: 8px 16px;
+    }
+
+    .use-case-item, .specialization-item, .info-block {
+        width: 90%;
+        margin: 10px 0;
+    }
+}
+
+/* For Galaxy Z Fold 5 (344x882) */
+@media (max-width: 344px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .hero-text {
+        font-size: 1rem;
+    }
+
+    .hero-button {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+    }
+
+    .use-case-item, .specialization-item, .info-block {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
