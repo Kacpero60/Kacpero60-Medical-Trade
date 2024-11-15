@@ -44,17 +44,17 @@
 /* Responsywność dla mniejszych ekranów */
 @media screen and (max-width: 768px) {
     .main-header {
-        width: 100vw; /* Zapewnia pełną szerokość ekranu, eliminując przesunięcie */
+        width: 100vw;
         height: auto;
         flex-direction: column;
         align-items: flex-start;
-        overflow-x: hidden; /* Zapobiega przesunięciu w poziomie */
+        overflow-x: hidden;
     }
     .main-header .logo-section {
         padding-left: 0;
         background-size: cover;
         z-index: 1;
-        width: 100%; /* Pełna szerokość logo na mobilnych */
+        width: 100%;
         justify-content: center;
         background-position: center;
     }
@@ -65,7 +65,6 @@
         display: none;
     }
 }
-
 
 /* Stylizacja paska nawigacyjnego */
 .navigation-bar {
@@ -100,6 +99,19 @@
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+/* Stylizacja dla linku Specification w headerze */
+.specification-link-header {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
 }
 
 /* Efekt podkreślenia tylko dla głównych linków */
@@ -143,24 +155,23 @@
 }
 
 .navigation-bar .dropdown-content {
-    background-color: #ffffff; /* Zmiana tła na białe */
+    background-color: #ffffff;
     padding: 10px;
     width: 100%;
     margin-top: 5px;
-    display: none; /* Domyślnie ukryte */
-    transition: opacity 1.2s ease 0.3s, transform 0.5s ease 0.3s; /* Wolniejsze, z większym opóźnieniem */
+    display: none;
+    transition: opacity 1.2s ease 0.3s, transform 0.5s ease 0.3s;
     opacity: 0;
-    transform: translateY(-15px); /* Początkowy przesunięty stan */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Dodanie delikatnego cienia dla estetyki */
+    transform: translateY(-15px);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 
 .navigation-bar .dropdown:hover .dropdown-content,
 .navigation-bar .dropdown.expanded .dropdown-content {
     opacity: 1;
     display: block;
-    transform: translateY(0); /* Resetuje przesunięcie przy rozwinięciu */
-    transition-delay: 0s; /* Natychmiastowy efekt przy najechaniu */
+    transform: translateY(0);
+    transition-delay: 0s;
 }
 
 /* Stylizacja podlinków */
@@ -185,7 +196,7 @@
     .navigation-bar ul {
         flex-direction: column;
         gap: 15px;
-        align-items: center; /* Wyśrodkowanie linków w pionie */
+        align-items: center;
     }
 
     .navigation-bar a {
@@ -193,24 +204,21 @@
         text-align: center;
     }
 
-    /* Ustawienia dla rozwijanego menu tylko na urządzeniach mobilnych */
     .navigation-bar .dropdown-content {
-        display: none; /* Ukryte domyślnie */
+        display: none;
         position: relative;
         width: 100%;
         box-shadow: none;
     }
 
-    /* Kiedy menu jest rozbudowane, pokazuje podlinki */
     .navigation-bar .dropdown.expanded .dropdown-content {
         display: block;
         width: 100%;
         margin-top: 10px;
-        text-align: center; /* Centrowanie podlinków */
-        position: static; /* Zapewnia, że są wyświetlane poniżej Specification */
+        text-align: center;
+        position: static;
     }
 
-    /* Centrowanie dropdown w nawigacji */
     .navigation-bar .dropdown {
         display: flex;
         flex-direction: column;
@@ -221,32 +229,28 @@
         display: block;
         padding: 8px;
     }
-    /* Stylizacja aktywnego linku */
-.dropdown-content a.active {
-    background-color: #007bff;
-    color: #ffffff;
-}
+    
+    .dropdown-content a.active {
+        background-color: #007bff;
+        color: #ffffff;
+    }
 
-/* Dostosowanie nagłówka na urządzenia mobilne */
-@media screen and (max-width: 768px) {
-    /* Ustawienie szerokości na pełen widok i ukrycie poziomego przewijania */
     body, html {
         margin: 0;
         padding: 0;
         width: 100vw;
-        overflow-x: hidden; /* Ukrycie przewijania w poziomie */
+        overflow-x: hidden;
     }
     
     .main-header {
-        width: 100vw; /* Ustawienie pełnej szerokości dla nagłówka */
-        overflow-x: hidden; /* Zapobiega przewijaniu w poziomie */
+        width: 100vw;
+        overflow-x: hidden;
     }
 
     .navigation-bar {
-        width: 100%; /* Ustawienie pełnej szerokości nawigacji */
+        width: 100%;
     }
 
-    /* Wyrównanie elementów do środka */
     .navigation-bar ul {
         padding: 0;
         margin: 0 auto;
@@ -254,11 +258,8 @@
         text-align: center;
     }
 
-    /* Ustawienie szerokości dropdowna na 100% */
     .dropdown-content {
-        width: 100%; /* Pełna szerokość rozwijanego menu */
+        width: 100%;
         box-sizing: border-box;
     }
-}
-
 }
