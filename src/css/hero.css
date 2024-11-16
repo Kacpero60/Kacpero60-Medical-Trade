@@ -758,3 +758,33 @@
         min-width: 280px; /* Minimalna szerokość bloku */
     }
 }
+/* Dla iPad Air (szerokość: 820px) */
+@media screen and (min-width: 820px) and (max-width: 1024px) {
+    .specialization-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Wyśrodkowanie elementów */
+        gap: 20px;
+    }
+
+    .specialization-item {
+        flex: 0 0 calc(33.33% - 20px); /* Trzy elementy w jednym rzędzie */
+        max-width: calc(33.33% - 20px);
+        box-sizing: border-box;
+    }
+}
+/* Dla iPad Air (szerokość: 820px) */
+@media screen and (min-width: 820px) and (max-width: 1024px) {
+    .applications-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Wyśrodkowanie kart */
+        gap: 20px; /* Odstępy między kartami */
+    }
+
+    .application-item {
+        flex: 0 0 calc(33.33% - 20px); /* Trzy elementy w rzędzie */
+        max-width: calc(33.33% - 20px); /* Utrzymanie proporcji */
+        box-sizing: border-box; /* Uwzględnienie paddingu w szerokości */
+    }
+}
