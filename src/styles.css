@@ -37,65 +37,105 @@ body, html {
     }
 }
 
-/* Responsywność dla MacBooków (1024px - 1440px) */
-@media screen and (min-width: 1024px) and (max-width: 1440px) {
-    body, html {
-        overflow-x: hidden;
-    }
-
-    .hero-section, .applications-grid, .specialization-grid {
-        max-width: 1440px; /* Utrzymanie układu wewnątrz ekranu */
-        margin: 0 auto;
-        width: 100%;
-    }
-
-    .applications-grid, .specialization-grid {
-        gap: 20px; /* Ujednolicone odstępy */
-        justify-content: space-between;
-    }
-
-    .application-item, .specialization-item {
-        flex: 1 1 calc(30% - 20px); /* Stała szerokość elementów */
-        max-width: calc(30% - 20px);
-    }
+/* Reset dla całego layoutu */
+body, html {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Zapobiega przewijaniu poziomemu */
 }
 
-/* Responsywność dla iPadów Pro (768px - 1024px) */
+/* Ustawienia globalne dla siatek */
+.grid {
+    display: flex;
+    flex-wrap: wrap; /* Zwijanie wierszy */
+    justify-content: space-between; /* Równe odstępy między elementami */
+    gap: 15px; /* Odstępy między elementami */
+}
+
+/* Elementy siatki */
+.grid-item {
+    flex: 0 0 calc(33.33% - 10px); /* Trzy elementy w rzędzie */
+    max-width: calc(33.33% - 10px);
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+/* Dostosowanie do iPad Air i podobnych urządzeń */
 @media screen and (max-width: 1024px) {
-    body, html {
-        overflow-x: hidden;
+    .grid-item {
+        flex: 0 0 calc(50% - 10px); /* Dwa elementy w rzędzie */
+        max-width: calc(50% - 10px);
     }
 
     .hero-section {
-        padding: 20px;
+        padding: 20px; /* Dodanie odstępów wewnętrznych */
     }
 
-    .applications-grid, .specialization-grid {
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 15px;
+    .hero-title {
+        font-size: 2.5rem; /* Dostosowanie rozmiaru tekstu */
     }
 
-    .application-item, .specialization-item {
-        flex: 1 1 calc(45% - 15px); /* Dwa elementy w rzędzie */
-        max-width: calc(45% - 15px);
+    .hero-text {
+        font-size: 1.3rem;
+    }
+
+    .hero-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
     }
 }
 
-/* Dostosowanie dla mniejszych ekranów (poniżej 768px) */
+/* Dostosowanie dla urządzeń mobilnych (poniżej 768px) */
 @media screen and (max-width: 768px) {
-    .hero-section, .applications-grid, .specialization-grid {
-        padding: 20px;
-    }
-
-    .applications-grid, .specialization-grid {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .application-item, .specialization-item {
-        flex: 1 1 100%; /* Pełna szerokość w układzie kolumnowym */
+    .grid-item {
+        flex: 0 0 100%; /* Jedna kolumna */
         max-width: 100%;
     }
+
+    .hero-section {
+        padding: 15px;
+        text-align: center; /* Wyśrodkowanie tekstu */
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-text {
+        font-size: 1.1rem;
+    }
+
+    .hero-button {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
 }
+
+/* Dostosowanie dla bardzo małych ekranów (poniżej 480px) */
+@media screen and (max-width: 480px) {
+    .grid {
+        flex-direction: column; /* Kolumna */
+        gap: 20px; /* Większe odstępy */
+    }
+
+    .grid-item {
+        flex: 1 1 100%; /* Pełna szerokość */
+        max-width: 100%;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-text {
+        font-size: 1rem;
+    }
+
+    .hero-button {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+    }
+}
+

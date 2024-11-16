@@ -221,36 +221,84 @@
 /* Stylizacja sekcji informacyjnej */
 .info-section {
     display: flex;
-    justify-content: space-around;
-    align-items: stretch;
+    flex-wrap: wrap; /* Pozwala na zawijanie elementów */
+    justify-content: space-between; /* Równe odstępy między elementami */
+    align-items: stretch; /* Elementy o tej samej wysokości */
     gap: 20px;
-    padding: 50px 0;
+    padding: 50px 20px;
     background-color: #f4f7fa;
-    flex-wrap: wrap; /* Umożliwienie zawijania elementów na mniejszych ekranach */
+    box-sizing: border-box;
 }
 
-/* Ustawienia dla kafelków info */
+/* Kafelki w sekcji info */
 .info-block {
-    width: 22%; /* Zachowanie oryginalnej szerokości na dużych ekranach */
-    min-width: 300px; /* Minimalna szerokość, aby były czytelne na mniejszych ekranach */
+    flex: 1 1 calc(25% - 20px); /* Cztery kafelki w rzędzie */
+    max-width: calc(25% - 20px);
+    min-width: 250px; /* Minimalna szerokość kafelka */
     padding: 30px;
-    background-color: rgba(0, 123, 255, 0.1); /* Jasnoniebieski kolor dla wszystkich kafelków */
-    border-radius: 20px; /* Zaokrąglenie rogów */
+    background-color: rgba(0, 123, 255, 0.1); /* Jasnoniebieski kolor */
+    border-radius: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: #003366;
+    box-sizing: border-box;
 }
 
-.info-block:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+/* Przyciski w kafelkach */
+.info-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    background: linear-gradient(to right, #004e92, #000428);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin-top: 20px; /* Poprawienie pozycji przycisku */
 }
 
-/* Responsywność dla sekcji info na dużych ekranach */
-@media (min-width: 1024px) {
+.info-button:hover {
+    background: linear-gradient(to right, #005c9c, #002060);
+    transform: scale(1.1);
+}
+
+/* Responsywność dla iPadów Pro (768px - 1024px) */
+@media screen and (max-width: 1024px) {
     .info-section {
-        flex-wrap: nowrap; /* Ustawienie kafelków obok siebie na dużych ekranach */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .info-block {
+        flex: 1 1 calc(45% - 20px); /* Dwa elementy w rzędzie */
+        max-width: calc(45% - 20px);
+    }
+}
+
+/* Responsywność dla MacBooków (1024px - 1440px) */
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+    .info-section {
+        justify-content: space-between;
+    }
+
+    .info-block {
+        flex: 1 1 calc(25% - 20px); /* Cztery elementy w rzędzie */
+        max-width: calc(25% - 20px);
+    }
+}
+
+/* Responsywność dla smartfonów (poniżej 768px) */
+@media screen and (max-width: 768px) {
+    .info-section {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .info-block {
+        flex: 1 1 100%; /* Pełna szerokość */
+        max-width: 100%;
     }
 }
 
@@ -664,5 +712,49 @@
     .application-item,
     .specialization-item {
         width: 90%; /* Jeden kafel na pełną szerokość */
+    }
+}
+/* Responsywność dla iPad Air (szerokość: 820px) */
+@media screen and (max-width: 820px) {
+    .info-section,
+    .specialization-grid,
+    .applications-grid {
+        display: flex;
+        flex-wrap: nowrap; /* Uniemożliwia zawijanie bloków */
+        justify-content: space-between; /* Równe odstępy między blokami */
+        overflow-x: auto; /* Dodaje przewijanie poziome w przypadku braku miejsca */
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .info-block,
+    .specialization-item,
+    .application-item {
+        flex: 0 0 calc(33.33% - 10px); /* Trzy bloki w rzędzie */
+        max-width: calc(33.33% - 10px); /* Utrzymanie stałej szerokości */
+        min-width: 300px; /* Minimalna szerokość bloku */
+        box-sizing: border-box;
+    }
+}
+
+/* Responsywność dla urządzeń poniżej 768px */
+@media screen and (max-width: 768px) {
+    .info-section,
+    .specialization-grid,
+    .applications-grid {
+        display: flex;
+        flex-wrap: nowrap; /* Uniemożliwia zawijanie bloków */
+        justify-content: space-between;
+        overflow-x: auto; /* Dodaje przewijanie poziome w przypadku braku miejsca */
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .info-block,
+    .specialization-item,
+    .application-item {
+        flex: 0 0 calc(50% - 10px); /* Dwa bloki w rzędzie */
+        max-width: calc(50% - 10px);
+        min-width: 280px; /* Minimalna szerokość bloku */
     }
 }

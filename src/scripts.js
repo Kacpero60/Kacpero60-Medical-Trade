@@ -264,5 +264,18 @@ $(document).ready(function() {
             console.log(`Załadowano plik: ${targetFile}`);
         });
     });
+    $(document).ready(function () {
+        // Dodanie rozwijania dropdowna "SPECIALIZATION" w footerze
+        $(".footer .dropdown").hover(
+            function () {
+                // Rozwijanie menu
+                $(this).find(".dropdown-content").stop(true, true).slideDown(200);
+            },
+            function () {
+                // Chowanie menu
+                $(this).find(".dropdown-content").stop(true, true).slideUp(200);
+            }
+        );
+    });
     
 });
