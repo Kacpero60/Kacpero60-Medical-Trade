@@ -257,5 +257,12 @@ $(document).ready(function() {
         }
       });
       
-      
+      $(document).on('click', '.specialization-link', function(event) {
+        event.preventDefault();
+        const targetFile = $(this).data('target'); // Pobierz plik z atrybutu data-target
+        loadContent(`src/partials/${targetFile}`, 'hero', function() {
+            console.log(`Załadowano plik: ${targetFile}`);
+        });
+    });
+    
 });
