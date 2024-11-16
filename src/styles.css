@@ -1,17 +1,9 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300; /* Lekka waga */
-}
-
-.logo-text {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300; /* Lżejsza waga dla subtelniejszego wyglądu */
-}
 body, html {
     width: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden; /* Zapobieganie przewijaniu poziomemu */
 }
 
 #main-content {
@@ -41,5 +33,68 @@ body, html {
     }
     to {
         opacity: 1;
+    }
+}
+
+/* Responsywność dla MacBooków (1024px - 1440px) */
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+    body, html {
+        overflow-x: hidden;
+    }
+
+    .hero-section, .applications-grid, .specialization-grid {
+        max-width: 1440px; /* Utrzymanie układu wewnątrz ekranu */
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .applications-grid, .specialization-grid {
+        gap: 20px; /* Ujednolicone odstępy */
+        justify-content: space-between;
+    }
+
+    .application-item, .specialization-item {
+        flex: 1 1 calc(30% - 20px); /* Stała szerokość elementów */
+        max-width: calc(30% - 20px);
+    }
+}
+
+/* Responsywność dla iPadów Pro (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    body, html {
+        overflow-x: hidden;
+    }
+
+    .hero-section {
+        padding: 20px;
+    }
+
+    .applications-grid, .specialization-grid {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .application-item, .specialization-item {
+        flex: 1 1 calc(45% - 15px); /* Dwa elementy w rzędzie */
+        max-width: calc(45% - 15px);
+    }
+}
+
+/* Dostosowanie dla mniejszych ekranów (poniżej 768px) */
+@media screen and (max-width: 768px) {
+    .hero-section, .applications-grid, .specialization-grid {
+        padding: 20px;
+    }
+
+    .applications-grid, .specialization-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .application-item, .specialization-item {
+        flex: 1 1 100%; /* Pełna szerokość w układzie kolumnowym */
+        max-width: 100%;
     }
 }
