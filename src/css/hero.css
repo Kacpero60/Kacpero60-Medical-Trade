@@ -788,3 +788,52 @@
         box-sizing: border-box; /* Uwzględnienie paddingu w szerokości */
     }
 }
+/* Responsywność dla MacBooków (1024px - 1440px) */
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+    .specialization-grid,
+    .applications-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between; /* Równe odstępy między elementami */
+    }
+
+    .specialization-item,
+    .application-item {
+        width: calc(33.33% - 20px); /* Trzy elementy w rzędzie */
+        max-width: calc(33.33% - 20px);
+    }
+
+    .specialization-title,
+    .applications-title {
+        font-size: 2.2rem; /* Dostosowanie rozmiaru tytułów */
+        text-align: center; /* Wyśrodkowanie tytułów */
+    }
+
+    .specialization-item h3,
+    .application-item h3 {
+        font-size: 1.8rem; /* Dopasowanie nagłówków */
+    }
+
+    .specialization-item p,
+    .application-item p {
+        font-size: 1.2rem; /* Dopasowanie rozmiaru tekstu */
+    }
+}
+/* Stylizacja dla ekranów powyżej 1024px */
+@media screen and (min-width: 1024px) {
+    .specialization-grid,
+    .applications-grid {
+        display: flex; /* Ustawienie elementów w jednym rzędzie */
+        flex-wrap: nowrap; /* Uniemożliwia zawijanie elementów */
+        justify-content: space-between; /* Równomierne rozmieszczenie elementów */
+        gap: 20px; /* Odstęp między elementami */
+    }
+
+    .specialization-item,
+    .application-item {
+        flex: 0 0 calc(33.33% - 20px); /* Każdy element zajmuje 1/3 szerokości */
+        max-width: calc(33.33% - 20px); /* Maksymalna szerokość */
+        box-sizing: border-box; /* Uwzględnij padding/margines w szerokości */
+    }
+}
