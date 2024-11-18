@@ -2,43 +2,48 @@
 .main-header {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 450px; /* Dostosowana wysokość nagłówka */
     overflow: hidden;
     display: flex;
     align-items: center;
+    background-color: rgba(0, 123, 255, 0.1); /* Kolor tła wypełniający białe pole */
 }
 
 .main-header .logo-section {
     position: relative;
-    width: 100%;
+    width: 40%; /* Powiększenie sekcji logo */
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 50px;
-    background-color: rgba(0, 123, 255, 0.1);
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%); /* Kształt trójkąta dla logo */
     z-index: 2;
 }
 
 .main-header .logo img {
-    height: 150px;
+    height: 150px; /* Powiększenie logo */
     width: auto;
+    margin-left: 20px; /* Przesunięcie logo bardziej na lewo */
 }
 
+/* Stylizacja dla wideo */
 .header-slider {
-    position: relative;
+    position: absolute;
+    top: 0;
+    right: 0; /* Wideo przesunięte na prawą stronę */
+    width: 60%; /* Dopasowanie szerokości wideo */
+    height: 100%; /* Dopasowanie wysokości nagłówka */
+    overflow: hidden;
+    z-index: 1;
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%); /* Kształt wideo */
+}
+
+.header-slider video {
     width: 100%;
     height: 100%;
-    background: url('/src/images/medyczne.jpg') no-repeat center center/cover;
-    animation: slideBackground 40s infinite;
-    z-index: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
-}
-
-@keyframes slideBackground {
-    0%, 20% { background: url('/src/images/medyczne.jpg') no-repeat center center/cover; }
-    25%, 50% { background: url('/src/images/medyczne2.jpg') no-repeat center center/cover; }
-    55%, 100% { background: url('/src/images/medyczne4.jpg') no-repeat center center/cover; }
+    object-fit: cover; /* Dopasowanie filmu do kontenera */
+    position: absolute;
+    z-index: -1; /* Wideo w tle */
 }
 
 /* Responsywność dla mniejszych ekranów */
