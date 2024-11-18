@@ -81,7 +81,7 @@
         height: auto;
         clip-path: none; /* Usunięcie kształtu dla logo */
         justify-content: center; /* Wyśrodkowanie logo */
-        background-color: rgba(0, 123, 255, 0.1); /* Kolor tła */
+
     }
 
     .main-header .logo img {
