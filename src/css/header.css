@@ -211,9 +211,10 @@
 
     .navigation-bar .dropdown-content {
         display: none;
-        position: relative;
-        width: 100%;
-        box-shadow: none;
+        position: static; /* Ustawienie menu jako blokowego dla mobile */
+        width: 100%; /* Szerokość dostosowana do rodzica */
+        opacity: 1; /* Zawsze widoczne */
+        transform: translateY(0); /* Brak przesunięcia */
     }
 
     .navigation-bar .dropdown.expanded .dropdown-content {
@@ -221,7 +222,6 @@
         width: 100%;
         margin-top: 10px;
         text-align: center;
-        position: static;
     }
 
     .navigation-bar .dropdown {
@@ -266,66 +266,5 @@
     .dropdown-content {
         width: 100%;
         box-sizing: border-box;
-    }
-}
-
-/* Responsywność dla MacBooków (1024px - 1440px) */
-@media screen and (min-width: 1024px) and (max-width: 1440px) {
-    .main-header,
-    .hero-section {
-        width: 100%;
-        overflow-x: hidden;
-    }
-
-    .applications-grid,
-    .specialization-grid {
-        gap: 20px;
-    }
-
-    .application-item,
-    .specialization-item {
-        width: 30%; /* Trzy kafle w jednym rzędzie */
-    }
-}
-
-/* Responsywność dla iPadów (768px - 1024px) */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    .main-header,
-    .hero-section {
-        width: 100%;
-        overflow-x: hidden;
-    }
-
-    .applications-grid,
-    .specialization-grid {
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-
-    .application-item,
-    .specialization-item {
-        width: 45%; /* Dwa kafle w rzędzie */
-    }
-}
-
-/* Responsywność dla mniejszych ekranów (smartfony - poniżej 768px) */
-@media screen and (max-width: 768px) {
-    .main-header,
-    .hero-section {
-        width: 100%;
-        overflow-x: hidden;
-        padding: 20px;
-    }
-
-    .applications-grid,
-    .specialization-grid {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .application-item,
-    .specialization-item {
-        width: 90%; /* Jeden kafel na pełną szerokość */
     }
 }
