@@ -155,23 +155,27 @@
 }
 
 .navigation-bar .dropdown-content {
+    position: absolute;
+    top: 100%; /* Wyświetlanie bezpośrednio pod głównym linkiem */
+    left: 0;
     background-color: #ffffff;
     padding: 10px;
-    width: 100%;
+    width: auto;
     margin-top: 5px;
-    display: none;
-    transition: opacity 1.2s ease 0.3s, transform 0.5s ease 0.3s;
-    opacity: 0;
-    transform: translateY(-15px);
+    display: none; /* Ukrywamy domyślnie */
+    opacity: 0; /* Startowe ustawienie przezroczystości */
+    transform: translateY(-15px); /* Początkowe przesunięcie do góry */
+    transition: transform 0.4s ease, opacity 0.4s ease; /* Płynne przesuwanie i pojawianie się */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 
+/* Wyświetlanie dropdown po najechaniu */
 .navigation-bar .dropdown:hover .dropdown-content,
 .navigation-bar .dropdown.expanded .dropdown-content {
-    opacity: 1;
-    display: block;
-    transform: translateY(0);
-    transition-delay: 0s;
+    display: block; /* Pokazanie menu */
+    opacity: 1; /* Pełna widoczność */
+    transform: translateY(0); /* Reset przesunięcia */
 }
 
 /* Stylizacja podlinków */
@@ -181,14 +185,15 @@
     color: #333;
     text-decoration: none;
     background-color: #f9f9f9;
-    border-radius: 10px;
+    border-radius: 8px;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+/* Efekt hover dla podlinków */
 .navigation-bar .dropdown-content a:hover {
     background-color: #007bff;
     color: #ffffff;
-    transform: scale(1.05);
+    transform: scale(1.05); /* Delikatne powiększenie linku */
 }
 
 /* Responsywność dla rozwijanego menu na mniejszych ekranach */
@@ -263,6 +268,7 @@
         box-sizing: border-box;
     }
 }
+
 /* Responsywność dla MacBooków (1024px - 1440px) */
 @media screen and (min-width: 1024px) and (max-width: 1440px) {
     .main-header,
