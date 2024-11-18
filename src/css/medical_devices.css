@@ -1,4 +1,4 @@
-/* Kontener na stronę */
+/* Stylizacja głównego kontenera */
 .page-container {
     width: 100%;
     background: linear-gradient(135deg, #e0f7fa); /* Delikatny gradient jako tło sekcji */
@@ -19,7 +19,6 @@
     border-radius: 10px; /* Zaokrąglenie rogów */
     margin: 0; /* Usunięcie marginesu */
     padding: 20px 0; /* Tylko padding w pionie */
-    box-sizing: border-box;
 }
 
 /* Kontener dla sekcji */
@@ -27,7 +26,6 @@
     display: grid; /* Użycie grid do układania elementów */
     grid-template-columns: repeat(2, 1fr); /* Dwie kolumny */
     gap: 20px; /* Odstęp między sekcjami */
-    box-sizing: border-box;
 }
 
 /* Sekcja zawierająca obraz i tekst */
@@ -50,8 +48,6 @@
 /* Kontener na obraz */
 .image-container {
     flex: 1;
-    padding-right: 15px; /* Dodanie odstępu po prawej stronie */
-    box-sizing: border-box;
 }
 
 .image-container img {
@@ -69,15 +65,12 @@
     font-size: 1.1rem; /* Ustawienie wielkości czcionki */
     line-height: 1.8;
     margin: 0; /* Usunięcie marginesu dla nagłówka */
-    box-sizing: border-box;
 }
 
 /* Stylizacja responsywna */
 @media screen and (max-width: 768px) {
     .content-wrapper {
         grid-template-columns: 1fr; /* Jedna kolumna na mniejszych ekranach */
-        padding: 0 15px; /* Dodanie paddingu po bokach */
-        box-sizing: border-box;
     }
 
     .content-section {
