@@ -46,6 +46,75 @@
     z-index: -1; /* Wideo w tle */
 }
 
+/* Responsywność dla tabletów i średnich ekranów */
+@media screen and (max-width: 1024px) {
+    .main-header {
+        height: 350px; /* Zmniejszenie wysokości nagłówka */
+    }
+
+    .main-header .logo-section {
+        width: 50%; /* Większa przestrzeń dla logo */
+        clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+    }
+
+    .main-header .logo img {
+        height: 120px; /* Zmniejszenie rozmiaru logo */
+        margin-left: 10px; /* Dostosowanie odstępu */
+    }
+
+    .header-slider {
+        width: 50%; /* Zmniejszenie szerokości wideo */
+        clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+/* Responsywność dla smartfonów i małych ekranów */
+@media screen and (max-width: 768px) {
+    .main-header {
+        height: 300px; /* Jeszcze mniejsza wysokość */
+        flex-direction: column; /* Ułożenie elementów w kolumnie */
+        align-items: flex-start;
+    }
+
+    .main-header .logo-section {
+        width: 100%; /* Logo zajmuje całą szerokość */
+        height: auto;
+        clip-path: none; /* Usunięcie kształtu dla logo */
+        justify-content: center; /* Wyśrodkowanie logo */
+        background-color: rgba(0, 123, 255, 0.1); /* Kolor tła */
+    }
+
+    .main-header .logo img {
+        height: 100px; /* Jeszcze mniejsze logo */
+        margin-left: 0; /* Wyśrodkowanie logo */
+    }
+
+    .header-slider {
+        display: none; /* Ukrycie wideo na małych ekranach */
+    }
+}
+
+/* Responsywność dla bardzo dużych ekranów */
+@media screen and (min-width: 1440px) {
+    .main-header {
+        height: 500px; /* Większa wysokość dla większych ekranów */
+    }
+
+    .main-header .logo-section {
+        width: 35%; /* Więcej przestrzeni dla wideo */
+        clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+    }
+
+    .main-header .logo img {
+        height: 180px; /* Większe logo */
+    }
+
+    .header-slider {
+        width: 65%; /* Większe wideo */
+        clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
 /* Responsywność dla mniejszych ekranów */
 @media screen and (max-width: 768px) {
     .main-header {
