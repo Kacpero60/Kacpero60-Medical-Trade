@@ -3,7 +3,7 @@
     position: relative;
     width: 100%;
     padding: 40px 10%;
-    background: linear-gradient(to bottom, #f8f9ff, #e8effc); /* Subtelne tło */
+    background:#f0f8ff;
     margin-bottom: 50px;
     display: flex;
     justify-content: center;
@@ -176,7 +176,7 @@
     margin-bottom: 50px;
 }
 
-.use-cases-section { background: #e7f0ff; }
+.use-cases-section { background: #f0f8ff; }
 .specialization-section { background: #f0f8ff; }
 
 /* Stylizacja tytułów */
@@ -189,9 +189,9 @@
 .applications-section {
     padding: 50px 0;
     text-align: center;
-    background: #e7f0ff;
+    background: #f0f8ff;;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    margin-bottom: 50px;
+    margin-bottom: 0px;
 }
 
 .applications-title {
@@ -324,7 +324,7 @@
     align-items: stretch; /* Elementy o tej samej wysokości */
     gap: 20px;
     padding: 50px 20px;
-    background-color: #f4f7fa;
+    background-color: #f0f8ff;
     box-sizing: border-box;
 }
 
