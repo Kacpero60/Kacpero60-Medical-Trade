@@ -118,10 +118,13 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on("click", "#contact-us-button", function(event) {
-        event.preventDefault();
-        loadContent('src/partials/inquiry_orders.html', 'hero');
+    $(document).on("click", "a[href='#contact']", function (event) {
+        event.preventDefault(); // Zapobiega domyślnemu zachowaniu
+        loadContent('src/partials/inquiry_orders.html', 'hero', function () {
+            console.log("Załadowano inquiry_orders.html z sekcji Contact.");
+        });
     });
+    
 
     $(document).on("click", 'a[href="#products"]', function(event) {
         event.preventDefault();
