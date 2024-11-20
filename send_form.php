@@ -17,7 +17,7 @@ $dotenv->load();
 // Pobierz dane z formularza
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $companyName = htmlspecialchars($_POST['company']);
-    $email = htmlspecialchars($_POST['email']);
+    $email = htmlspecialchars($_POST['email']); // Email osoby wypełniającej formularz
     $zipCode = htmlspecialchars($_POST['zipcode']);
     $country = htmlspecialchars($_POST['country']);
     $productName = htmlspecialchars($_POST['product']);
@@ -38,40 +38,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mail->isSMTP();
         $mail->Host = getenv('SMTP_HOST');
         $mail->SMTPAuth = true;
-        $mail->Username = getenv('SMTP_USER'); // Adres e-mail
-        $mail->Password = getenv('SMTP_PASS'); // Hasło
+        $mail->Username = getenv('SMTP_USER'); // Adres do logowania SMTP
+        $mail->Password = getenv('SMTP_PASS'); // Hasło do logowania SMTP
         $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS; // Szyfrowanie TLS
         $mail->Port = getenv('SMTP_PORT'); // Port SMTP
 
-        // Dane nadawcy i odbiorcy
-        $mail->setFrom(getenv('SMTP_USER'), 'Medical Trade');
-        $mail->addAddress(getenv('EMAIL_USER')); // Adres odbiorcy
+        // Ustawienie nadawcy jako użytkownika wypełniającego formularz
+        $mail->setFrom($email, $companyName); // Nadawca: adres e-mail i nazwa firmy osoby wypełniającej formularz
+
+        // Stały odbiorca: adres e-mail firmy (Jasema)
+        $mail->addAddress(getenv('EMAIL_USER')); // Adres odbiorcy (np. office@jasema.pl)
 
         // Treść e-maila
         $mail->isHTML(true);
-        $mail->Subject = "New Inquiry from $companyName";
+        $mail->Subject = "Nowe zamówienie od $companyName";
         $mail->Body = "
-            <h3>New message from the Inquiry form</h3>
-            <p><strong>Company Name:</strong> $companyName</p>
+            <h3>Nowe zamówienie z formularza:</h3>
+            <p><strong>Nazwa firmy:</strong> $companyName</p>
             <p><strong>Email:</strong> $email</p>
-            <p><strong>City Zip Code:</strong> $zipCode</p>
-            <p><strong>Country:</strong> $country</p>
-            <p><strong>Product Name:</strong> $productName</p>
-            <p><strong>Reference / Code:</strong> $referenceCode</p>
-            <p><strong>Quantity:</strong> $quantity</p>
-            <p><strong>Shipping:</strong> $shipping</p>
-            <p><strong>Message:</strong> $message</p>
+            <p><strong>Kod pocztowy:</strong> $zipCode</p>
+            <p><strong>Kraj:</strong> $country</p>
+            <p><strong>Nazwa produktu:</strong> $productName</p>
+            <p><strong>Kod referencyjny:</strong> $referenceCode</p>
+            <p><strong>Ilość:</strong> $quantity</p>
+            <p><strong>Rodzaj wysyłki:</strong> $shipping</p>
+            <p><strong>Wiadomość:</strong> $message</p>
         ";
 
         // Wysłanie e-maila
         if ($mail->send()) {
-            echo "Message sent successfully!";
+            echo "Formularz został wysłany pomyślnie!";
         } else {
-            echo "Failed to send the message.";
+            echo "Błąd: Nie udało się wysłać formularza.";
         }
     } catch (Exception $e) {
-        echo "Mailer Error: {$mail->ErrorInfo}";
+        echo "Błąd PHPMailer: {$mail->ErrorInfo}";
     }
 } else {
-    echo "Invalid request.";
+    echo "Nieprawidłowe żądanie.";
 }
