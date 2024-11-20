@@ -1,0 +1,15 @@
+{
+    "name": "kapiw/kacpero60-medical-trade",
+    "autoload": {
+        "psr-4": {
+            "Kapiw\\Kacpero60MedicalTrade\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kacpero60",
+            "email": "kapiw2002@gmail.com"
+        }
+    ],
+    "require": {}
+}

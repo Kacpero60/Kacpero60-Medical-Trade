@@ -1,6 +1,8 @@
 <?php
+
+require 'vendor/autoload.php'; // Ładowanie autoloadera Composer
+
 // Ładowanie danych z pliku .env
-require 'vendor/autoload.php'; // Jeśli używasz biblioteki dotenv
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
