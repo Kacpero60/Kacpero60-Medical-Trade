@@ -3,11 +3,8 @@
 require __DIR__ . '/vendor/autoload.php'; // Ładowanie autoloadera Composer
 
 // Sprawdź, czy klasa PHPMailer jest załadowana
-if (class_exists('PHPMailer\PHPMailer\PHPMailer')) {
-    echo "PHPMailer załadowany poprawnie!<br>";
-} else {
-    echo "Błąd: Klasa PHPMailer nie została załadowana!<br>";
-    die();
+if (!class_exists('PHPMailer\PHPMailer\PHPMailer')) {
+    die("Błąd: Klasa PHPMailer nie została załadowana!");
 }
 
 // Ładowanie danych z pliku .env
@@ -17,7 +14,7 @@ $dotenv->load();
 // Pobierz dane z formularza
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $companyName = htmlspecialchars($_POST['company']);
-    $email = htmlspecialchars($_POST['email']); // Email osoby wypełniającej formularz
+    $email = htmlspecialchars($_POST['email']); // E-mail użytkownika (nadawca)
     $zipCode = htmlspecialchars($_POST['zipcode']);
     $country = htmlspecialchars($_POST['country']);
     $productName = htmlspecialchars($_POST['product']);
@@ -30,24 +27,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mail = new PHPMailer\PHPMailer\PHPMailer();
 
     // Debugowanie SMTP
-    $mail->SMTPDebug = PHPMailer\PHPMailer\SMTP::DEBUG_SERVER; // Wyświetl szczegóły komunikacji SMTP
+    $mail->SMTPDebug = PHPMailer\PHPMailer\SMTP::DEBUG_SERVER; // Szczegóły komunikacji
     $mail->Debugoutput = 'html'; // Format debugowania
 
     try {
-        // Ustawienia serwera SMTP
+        // Ustawienia serwera SMTP (CloudRocket)
         $mail->isSMTP();
-        $mail->Host = getenv('SMTP_HOST');
+        $mail->Host = getenv('SMTP_HOST'); // Host SMTP
         $mail->SMTPAuth = true;
         $mail->Username = getenv('SMTP_USER'); // Adres do logowania SMTP
         $mail->Password = getenv('SMTP_PASS'); // Hasło do logowania SMTP
         $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS; // Szyfrowanie TLS
-        $mail->Port = getenv('SMTP_PORT'); // Port SMTP
+        $mail->Port = getenv('SMTP_PORT'); // Port SMTP (587 dla TLS)
 
         // Ustawienie nadawcy jako użytkownika wypełniającego formularz
-        $mail->setFrom($email, $companyName); // Nadawca: adres e-mail i nazwa firmy osoby wypełniającej formularz
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            die("Nieprawidłowy adres e-mail nadawcy.");
+        }
+        $mail->setFrom($email, $companyName); // Nadawca: e-mail i nazwa firmy użytkownika
 
-        // Stały odbiorca: adres e-mail firmy (Jasema)
-        $mail->addAddress(getenv('EMAIL_USER')); // Adres odbiorcy (np. office@jasema.pl)
+        // Stały odbiorca: office@jasema.pl
+        $mail->addAddress(getenv('EMAIL_USER')); // Adres odbiorcy
 
         // Treść e-maila
         $mail->isHTML(true);
