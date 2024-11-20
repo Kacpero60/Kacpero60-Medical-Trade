@@ -18,31 +18,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $shipping = htmlspecialchars($_POST['shipping']);
     $message = htmlspecialchars($_POST['message']);
 
-    // Dane e-maila
-    $to = getenv('EMAIL_USER'); // Adres docelowy (np. office@jasema.pl)
-    $subject = "New Inquiry from $companyName";
-    $body = "
-        <h3>New message from the Inquiry form</h3>
-        <p><strong>Company Name:</strong> $companyName</p>
-        <p><strong>Email:</strong> $email</p>
-        <p><strong>City Zip Code:</strong> $zipCode</p>
-        <p><strong>Country:</strong> $country</p>
-        <p><strong>Product Name:</strong> $productName</p>
-        <p><strong>Reference / Code:</strong> $referenceCode</p>
-        <p><strong>Quantity:</strong> $quantity</p>
-        <p><strong>Shipping:</strong> $shipping</p>
-        <p><strong>Message:</strong> $message</p>
-    ";
-    $headers = "From: $email\r\n";
-    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+    // Ustawienia PHPMailer
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    try {
+        // Ustawienia serwera SMTP
+        $mail->isSMTP();
+        $mail->Host = getenv('SMTP_HOST');
+        $mail->SMTPAuth = true;
+        $mail->Username = getenv('SMTP_USER'); // Adres e-mail
+        $mail->Password = getenv('SMTP_PASS'); // Hasło
+        $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS; // Szyfrowanie TLS
+        $mail->Port = getenv('SMTP_PORT'); // Port SMTP
 
-    // Wysyłka e-maila
-    if (mail($to, $subject, $body, $headers)) {
-        echo "Message sent successfully!";
-    } else {
-        echo "Failed to send the message.";
+        // Dane nadawcy i odbiorcy
+        $mail->setFrom(getenv('SMTP_USER'), 'Medical Trade');
+        $mail->addAddress(getenv('EMAIL_USER')); // Adres odbiorcy
+
+        // Treść e-maila
+        $mail->isHTML(true);
+        $mail->Subject = "New Inquiry from $companyName";
+        $mail->Body = "
+            <h3>New message from the Inquiry form</h3>
+            <p><strong>Company Name:</strong> $companyName</p>
+            <p><strong>Email:</strong> $email</p>
+            <p><strong>City Zip Code:</strong> $zipCode</p>
+            <p><strong>Country:</strong> $country</p>
+            <p><strong>Product Name:</strong> $productName</p>
+            <p><strong>Reference / Code:</strong> $referenceCode</p>
+            <p><strong>Quantity:</strong> $quantity</p>
+            <p><strong>Shipping:</strong> $shipping</p>
+            <p><strong>Message:</strong> $message</p>
+        ";
+
+        // Wysłanie e-maila
+        if ($mail->send()) {
+            echo "Message sent successfully!";
+        } else {
+            echo "Failed to send the message.";
+        }
+    } catch (Exception $e) {
+        echo "Mailer Error: {$mail->ErrorInfo}";
     }
 } else {
     echo "Invalid request.";
 }
-?>
