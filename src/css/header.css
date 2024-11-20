@@ -1,221 +1,103 @@
-/* Stylizacja głównego nagłówka */
 .main-header {
     position: relative;
     width: 100%;
-    height: 450px; /* Dostosowana wysokość nagłówka */
+    height: 450px;
     overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Ustawienie przestrzeni między logo a wideo */
-    background-color: #ffffff; /* Kolor tła */
+    justify-content: space-between;
+    background-color: #ffffff;
 }
 
-/* Stylizacja sekcji logo */
 .logo-section {
     position: relative;
-    width: 45%; /* Większa przestrzeń dla logo */
+    width: 40%; /* Zmniejszenie szerokości sekcji logo */
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999; /* Logo zawsze na wierzchu */
-    padding: 20px; /* Dodatkowa przestrzeń wokół logo */
-    background-color: #ffffff; /* Tło logo */
-    clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%); /* Nachylenie tylko po lewej stronie */
+    z-index: 9999;
+    padding: 10px;
+    background-color: #ffffff;
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%); /* Drobna korekta kąta */
 }
 
-/* Stylizacja samego logo */
 .logo-section img {
-    max-height: 100%; /* Dynamiczne dostosowanie wysokości logo */
-    max-width: 100%; /* Dynamiczne dostosowanie szerokości logo */
-    margin-left: 20px; /* Margines dla wyśrodkowania */
+    max-height: 70%; /* Zmniejszenie maksymalnej wysokości logo */
+    max-width: 80%; /* Zmniejszenie szerokości logo */
+    object-fit: contain;
+    margin-left: 10px;
 }
 
-/* Wideo w tle */
 .header-slider {
     position: absolute;
     top: 0;
     right: 0;
-    width: 55%; /* Zmniejszenie szerokości wideo */
-    height: 100%; /* Dopasowanie wysokości wideo */
+    width: 60%; /* Większa szerokość dla wideo */
+    height: 100%;
     overflow: hidden;
     z-index: 1;
-    clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 100%); /* Większy kąt nachylenia */
+    clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 100%);
 }
 
 .header-slider video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Dopasowanie wideo do kontenera */
+    object-fit: cover;
     position: absolute;
-    z-index: -1; /* Wideo w tle */
-}
-/* Responsywność dla ekranów od 1441px do 1900px */
-@media screen and (min-width: 1441px) and (max-width: 1900px) {
-    .main-header {
-        height: 450px; /* Utrzymanie standardowej wysokości dla tych ekranów */
-    }
-
-    .logo-section {
-        width: 50%; /* Zwiększenie przestrzeni dla logo */
-    }
-
-    .header-slider {
-        width: 45%; /* Zmniejszenie szerokości wideo, by nie nachodziło na logo */
-    }
+    z-index: -1;
 }
 
-/* Responsywność dla ekranów 1024px - 1366px (iPad Pro) */
-@media screen and (min-width: 1024px) and (max-width: 1366px) {
-    .main-header {
-        height: 400px; /* Mniejsza wysokość dla większych ekranów */
-    }
-
-    .logo-section {
-        width: 50%; /* Więcej przestrzeni dla logo */
-    }
-
-    .header-slider {
-        width: 50%; /* Zmniejszenie szerokości wideo */
-    }
-}
-
-/* Responsywność dla średnich ekranów (np. MacBook) */
+/* Dostosowanie do MacBooków i średnich ekranów */
 @media screen and (max-width: 1440px) {
     .main-header {
-        height: 400px; /* Mniejsza wysokość dla laptopów */
+        height: 400px;
     }
 
     .logo-section {
-        width: 50%; /* Zwiększenie przestrzeni dla logo */
+        width: 45%; /* Więcej przestrzeni dla logo */
     }
 
     .header-slider {
-        width: 50%; /* Zmniejszenie szerokości wideo */
+        width: 55%; /* Dostosowanie wideo */
     }
 }
 
-/* Responsywność dla małych ekranów (np. tablety) */
+/* Dostosowanie do tabletów */
 @media screen and (max-width: 1024px) {
     .main-header {
-        height: 350px; /* Dostosowanie wysokości */
+        height: 350px;
     }
 
     .logo-section {
-        width: 60%; /* Zwiększenie przestrzeni dla logo */
-    }
-
-    .logo-section img {
-        max-width: 90%;
+        width: 50%;
+        clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
     }
 
     .header-slider {
-        width: 40%; /* Zmniejszenie wideo */
+        width: 50%;
     }
 }
 
-/* Responsywność dla smartfonów */
+/* Dostosowanie do smartfonów */
 @media screen and (max-width: 768px) {
     .main-header {
-        flex-direction: column; /* Elementy w jednej kolumnie */
+        flex-direction: column;
         align-items: center;
-        height: auto; /* Dynamiczna wysokość */
-    }
-
-    .logo-section {
-        width: 100%; /* Logo zajmuje pełną szerokość */
-        clip-path: none; /* Bez przycinania */
-    }
-
-    .logo-section img {
-        max-width: 80%; /* Dostosowanie wielkości logo */
-    }
-
-    .header-slider {
-        display: none; /* Ukrycie wideo */
-    }
-}
-
-/* Responsywność dla ekranów od 1025px w górę */
-@media screen and (min-width: 1025px) {
-    .main-header {
-        height: 500px; /* Większa wysokość dla dużych ekranów */
-    }
-
-    .logo-section {
-        width: 40%; /* Odpowiednia przestrzeń dla logo */
-    }
-
-    .logo-section img {
         height: auto;
-        max-height: 180px; /* Ustawienie maksymalnej wysokości logo */
-        max-width: 90%; /* Dynamiczne dopasowanie szerokości logo */
-        margin-left: 20px;
     }
 
-    .header-slider {
-        width: 60%; /* Większe wideo dla ekranów od 1025px */
-    }
-
-    .header-slider video {
+    .logo-section {
         width: 100%;
-        height: 100%;
-        object-fit: cover; /* Dopasowanie wideo do kontenera */
-    }
-}
-
-/* Responsywność dla bardzo dużych ekranów od 1440px */
-@media screen and (min-width: 1440px) {
-    .main-header {
-        height: 550px; /* Jeszcze większa wysokość dla większych ekranów */
-    }
-
-    .logo-section {
-        width: 35%; /* Więcej miejsca na wideo */
+        clip-path: none;
     }
 
     .logo-section img {
-        max-height: 200px; /* Większe logo dla dużych ekranów */
-        max-width: 100%;
+        max-width: 80%;
     }
 
     .header-slider {
-        width: 50%; /* Większe wideo */
-    }
-}
-
-/* Responsywność dla dużych ekranów (min. 1440px) */
-@media screen and (min-width: 1440px) {
-    .main-header {
-        height: 550px; /* Większa wysokość dla większych ekranów */
-    }
-
-    .logo-section {
-        width: 35%; /* Więcej miejsca na wideo */
-    }
-
-    .logo-section img {
-        max-height: 200px; /* Większe logo dla dużych ekranów */
-        max-width: 100%;
-    }
-
-    .header-slider {
-        width: 65%; /* Większe wideo */
-    }
-}
-
-/* Responsywność dla ekranów od 1448px do 1900px */
-@media screen and (min-width: 1448px) and (max-width: 1900px) {
-    .main-header {
-        height: 450px; /* Utrzymanie standardowej wysokości dla tych ekranów */
-    }
-
-    .logo-section {
-        width: 45%; /* Zwiększenie przestrzeni dla logo */
-    }
-
-    .header-slider {
-        width: 50%; /* Zmniejszenie szerokości wideo, by nie nachodziło na logo */
+        display: none;
     }
 }
 
