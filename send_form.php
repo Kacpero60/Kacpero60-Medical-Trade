@@ -1,6 +1,14 @@
 <?php
 
-require 'vendor/autoload.php'; // Ładowanie autoloadera Composer
+require __DIR__ . '/vendor/autoload.php'; // Ładowanie autoloadera Composer
+
+// Sprawdź, czy klasa PHPMailer jest załadowana
+if (class_exists('PHPMailer\PHPMailer\PHPMailer')) {
+    echo "PHPMailer załadowany poprawnie!<br>";
+} else {
+    echo "Błąd: Klasa PHPMailer nie została załadowana!<br>";
+    die();
+}
 
 // Ładowanie danych z pliku .env
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
