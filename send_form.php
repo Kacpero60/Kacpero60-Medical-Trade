@@ -11,6 +11,13 @@ if (!class_exists('PHPMailer\PHPMailer\PHPMailer')) {
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
+// Debugowanie zmiennych środowiskowych
+echo "Debugowanie zmiennych .env:<br>";
+echo "SMTP_HOST: " . getenv('SMTP_HOST') . "<br>";
+echo "SMTP_PORT: " . getenv('SMTP_PORT') . "<br>";
+echo "SMTP_USER: " . getenv('SMTP_USER') . "<br>";
+echo "EMAIL_USER: " . getenv('EMAIL_USER') . "<br>";
+
 // Pobierz dane z formularza
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $companyName = htmlspecialchars($_POST['company']);
@@ -42,12 +49,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Ustawienie nadawcy jako użytkownika wypełniającego formularz
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            die("Nieprawidłowy adres e-mail nadawcy.");
+            die("Nieprawidłowy adres e-mail nadawcy: $email");
         }
         $mail->setFrom($email, $companyName); // Nadawca: e-mail i nazwa firmy użytkownika
 
         // Stały odbiorca: office@jasema.pl
         $mail->addAddress(getenv('EMAIL_USER')); // Adres odbiorcy
+
+        // Debugowanie adresu odbiorcy
+        if (!filter_var(getenv('EMAIL_USER'), FILTER_VALIDATE_EMAIL)) {
+            die("Nieprawidłowy adres e-mail odbiorcy: " . getenv('EMAIL_USER'));
+        }
 
         // Treść e-maila
         $mail->isHTML(true);
