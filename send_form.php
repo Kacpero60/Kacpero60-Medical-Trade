@@ -28,6 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Ustawienia PHPMailer
     $mail = new PHPMailer\PHPMailer\PHPMailer();
+
+    // Debugowanie SMTP
+    $mail->SMTPDebug = PHPMailer\PHPMailer\SMTP::DEBUG_SERVER; // Wyświetl szczegóły komunikacji SMTP
+    $mail->Debugoutput = 'html'; // Format debugowania
+
     try {
         // Ustawienia serwera SMTP
         $mail->isSMTP();
